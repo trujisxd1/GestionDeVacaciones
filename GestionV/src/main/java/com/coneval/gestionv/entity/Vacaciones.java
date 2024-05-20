@@ -21,11 +21,13 @@ public class Vacaciones {
 
     private String estado; // e.g., "Aprobado", "Pendiente", "Rechazado"
 
-    private String diasSolicitados;
+
 
     private String periodo;
 
+    private int diasSolicitados;
 
+    private int diasRestantes;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
