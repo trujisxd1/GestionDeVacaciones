@@ -2,6 +2,7 @@ package com.coneval.gestionv.entity;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -23,6 +24,7 @@ public class Vacaciones {
 
 
 
+    @NotBlank
     private String periodo;
 
     private int diasSolicitados;
