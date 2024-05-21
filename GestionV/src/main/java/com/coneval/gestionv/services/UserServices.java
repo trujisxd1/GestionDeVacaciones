@@ -5,6 +5,7 @@ import com.coneval.gestionv.entity.User;
 import com.coneval.gestionv.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,34 +17,31 @@ import java.util.Optional;
 public class UserServices {
 
     @Autowired
+    private UserRepository repository;
 
-    private UserRepository userRepository;
+
 
 
     @Transactional(readOnly = true)
-    public List<User>listar(){
-
-        return this.userRepository.findAll();
+    public List<User> findAll() {
+        return (List) this.repository.findAll();
     }
 
-    public void saveUser(User user){
+    @Transactional(readOnly = true)
 
-        this.userRepository.save(user);
+    public Optional<User> findById(Integer id) {
+        return repository.findById(id);
     }
 
-    public User buscarPorId(Integer id){
-
-
-        Optional<User>optional=this.userRepository.findById(id);
-
-        if (optional.isPresent()){
-            return optional.get();
-        }
-        return null;
+    @Transactional
+    public User save(User user) {
+        return repository.save(user);
     }
 
-    public void delete(Integer id){
+    @Transactional
 
-        this.userRepository.deleteById(id);
+    public void deleteById(Integer id) {
+
+        repository.deleteById(id);
     }
 }
