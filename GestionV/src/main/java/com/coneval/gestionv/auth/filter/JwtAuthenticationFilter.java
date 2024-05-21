@@ -1,6 +1,6 @@
 package com.coneval.gestionv.auth.filter;
 
-import ch.qos.logback.core.util.SystemInfo;
+
 import com.coneval.gestionv.entity.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Claims;
@@ -9,7 +9,7 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -17,7 +17,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import javax.crypto.SecretKey;
+
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Date;
@@ -42,6 +42,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
         String email=null;
         String password=null;
+        Integer userId=null;
 
 
 
@@ -49,6 +50,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
             User user=new ObjectMapper().readValue(request.getInputStream(),User.class);
             email=user.getEmail();
             password=user.getPassword();
+            userId=user.getId();
 
 
 
