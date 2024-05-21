@@ -1,6 +1,7 @@
 package com.coneval.gestionv.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -9,7 +10,8 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDate;
+
 import java.util.List;
 
 @Entity
@@ -52,7 +54,8 @@ public class User {
             uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id","role_id"})})
    private List<Role>roles;
 
-   private Date fechaDeIngreso;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+    private LocalDate fechaDeIngreso;
     @JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
     @ManyToOne
     @JoinColumn(name = "departamento_id")

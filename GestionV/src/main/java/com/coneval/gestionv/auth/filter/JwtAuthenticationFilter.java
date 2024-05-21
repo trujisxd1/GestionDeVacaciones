@@ -1,5 +1,6 @@
 package com.coneval.gestionv.auth.filter;
 
+import ch.qos.logback.core.util.SystemInfo;
 import com.coneval.gestionv.entity.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Claims;
@@ -43,10 +44,14 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         String password=null;
 
 
+
         try {
             User user=new ObjectMapper().readValue(request.getInputStream(),User.class);
             email=user.getEmail();
             password=user.getPassword();
+
+
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -63,7 +68,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         org.springframework.security.core.userdetails.User user= ( org.springframework.security.core.userdetails.User) authResult.getPrincipal();
         String email=user.getUsername();
 
-        User user1 = new User();
+
 
 
         Collection<? extends GrantedAuthority>roles= authResult.getAuthorities();
