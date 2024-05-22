@@ -2,6 +2,7 @@ package com.coneval.gestionv.auth;
 
 
 import com.coneval.gestionv.auth.filter.JwtAuthenticationFilter;
+import com.coneval.gestionv.auth.filter.JwtValidationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -37,6 +38,7 @@ public class SpringSecurityConfig {
                         .requestMatchers(HttpMethod.PUT,"/api/v1/{id}").hasRole("ADMIN")
                         .anyRequest().authenticated())
                 .addFilter(new JwtAuthenticationFilter(authenticationManager()))
+                .addFilter(new JwtValidationFilter(authenticationManager()))
 
                         .csrf(config -> config.disable())
                          .sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
