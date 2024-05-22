@@ -42,6 +42,12 @@ public class User {
 
    private String password;
 
+   private String puesto;
+
+   private String status;
+
+   private String cordinaciones;
+
    @NotNull
    @NotBlank
    private String rfc;
@@ -56,7 +62,7 @@ public class User {
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private LocalDate fechaDeIngreso;
-    @JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
+
     @ManyToOne
     @JoinColumn(name = "departamento_id")
     private Departamento departamento;
