@@ -44,7 +44,7 @@ public class User {
 
    private String puesto;
 
-   private String status;
+
 
    private String cordinaciones;
 
