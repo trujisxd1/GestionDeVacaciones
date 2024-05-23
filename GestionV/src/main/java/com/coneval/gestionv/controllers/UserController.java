@@ -37,6 +37,19 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity<User> Crear(@RequestBody User user) {
+
+        //JSON para editar
+
+//        {
+//            "nombre": "NuevoNombre",
+//                "apellidoM": "NuevoApellidoM",
+//                "apellidoP": "NuevoApellidoP",
+//                "email": "nuevoemail@example.com",
+//                "rfc": "NUEVORFC123",
+//                "fechaDeIngreso": "25-05-2024",
+//                "puestoId": 2
+//
+//        }
         return ResponseEntity.status(HttpStatus.CREATED).body(service.save(user));
     }
 
