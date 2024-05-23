@@ -1,11 +1,17 @@
 package com.coneval.gestionv.services;
 
 
+import com.coneval.gestionv.dto.UserRequest;
+import com.coneval.gestionv.entity.Cordinaciones;
+import com.coneval.gestionv.entity.Departamento;
 import com.coneval.gestionv.entity.User;
+import com.coneval.gestionv.repository.DepartamentoRepository;
 import com.coneval.gestionv.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
+import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,11 +25,15 @@ public class UserServices {
     @Autowired
     private UserRepository repository;
 
-
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+    @Autowired
+    private DepartamentoRepository departamentoRepository;
 
 
     @Transactional(readOnly = true)
     public List<User> findAll() {
+
         return (List) this.repository.findAll();
     }
 
@@ -35,6 +45,9 @@ public class UserServices {
 
     @Transactional
     public User save(User user) {
+
+    user.setPassword(passwordEncoder.encode(user.getPassword()));
+
         return repository.save(user);
     }
 
@@ -43,5 +56,36 @@ public class UserServices {
     public void deleteById(Integer id) {
 
         repository.deleteById(id);
+    }
+
+    @Transactional
+    public Optional<User>actualizar(UserRequest userRequest, Integer id){
+
+        Optional<User> userOptional = repository.findById(id);
+
+        if (userOptional.isPresent()) {
+            User userDb = userOptional.get();
+            userDb.setEmail(userRequest.getEmail());
+            userDb.setApellidoM(userRequest.getApellidoM());
+            userDb.setApellidoP(userRequest.getApellidoP());
+            userDb.setNombre(userRequest.getNombre());
+            userDb.setRfc(userRequest.getRfc());
+            userDb.setFechaDeIngreso(userRequest.getFechaDeIngreso());
+
+            // Set Departamento
+            if (userRequest.getPuestoId() != null) {
+                Optional<Departamento> departamentoOptional = departamentoRepository.findById(userRequest.getPuestoId());
+                departamentoOptional.ifPresent(userDb::setPuesto);
+            }
+
+////             Set Cordinaciones
+//            if (userRequest.getCordinacionId() != null) {
+//                Optional<Cordinaciones> cordinacionesOptional = cordinacionesRepository.findById(userRequest.getCordinacionId());
+//                cordinacionesOptional.ifPresent(userDb::setCordinacion);
+//            }
+
+            return Optional.of(repository.save(userDb));
+        }
+        return Optional.empty();
     }
 }

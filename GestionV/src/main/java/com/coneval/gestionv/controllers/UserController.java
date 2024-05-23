@@ -1,5 +1,6 @@
 package com.coneval.gestionv.controllers;
 
+import com.coneval.gestionv.dto.UserRequest;
 import com.coneval.gestionv.entity.User;
 import com.coneval.gestionv.services.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,19 +40,13 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body(service.save(user));
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<User> Actualizar(@PathVariable Integer id, @RequestBody User user) {
-        Optional<User> userOptional = service.findById(id);
+    @PutMapping("/editar/{id}")
+    public ResponseEntity<User> Actualizar(@PathVariable Integer id, @RequestBody UserRequest user) {
+        Optional<User> userOptional = service.actualizar(user,id);
 
         if (userOptional.isPresent()) {
-            User userDb = userOptional.get();
-            userDb.setEmail(user.getEmail());
-            userDb.setApellidoM(user.getApellidoM());
-            userDb.setApellidoP(user.getApellidoP());
-            userDb.setNombre(user.getNombre());
-            userDb.setPassword(user.getPassword());
-            userDb.setRfc(user.getRfc());
-            return ResponseEntity.ok(service.save(userDb));
+
+            return ResponseEntity.ok(userOptional.orElseThrow());
         }
         return ResponseEntity.notFound().build();
     }
