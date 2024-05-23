@@ -42,11 +42,7 @@ public class User {
 
    private String password;
 
-   private String puesto;
 
-
-
-   private String cordinaciones;
 
    @NotNull
    @NotBlank
@@ -64,8 +60,14 @@ public class User {
     private LocalDate fechaDeIngreso;
 
     @ManyToOne
-    @JoinColumn(name = "departamento_id")
-    private Departamento departamento;
+    @JoinColumn(name = "puesto_id")
+    private Departamento puesto;
+
+
+
+    @ManyToOne
+    @JoinColumn(name = "cordinacion_id")
+    private Cordinaciones cordinacion;
 
     @OneToMany(mappedBy = "user")
     private List<Vacaciones> vacaciones;
