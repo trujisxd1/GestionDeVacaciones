@@ -23,7 +23,6 @@ public class Vacaciones {
     private String estado; // e.g., "Aprobado", "Pendiente", "Rechazado"
 
 
-
     @NotBlank
     private String periodo;
 

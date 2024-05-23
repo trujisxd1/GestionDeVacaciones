@@ -1,16 +1,14 @@
 package com.coneval.gestionv.entity;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
 @NoArgsConstructor
 @Data
+@Table(name = "puestos")
 public class Departamento {
 
     @Id
@@ -19,5 +17,5 @@ public class Departamento {
 
     private String puesto;
 
-    private String areDeAdscripción;
+
 }
