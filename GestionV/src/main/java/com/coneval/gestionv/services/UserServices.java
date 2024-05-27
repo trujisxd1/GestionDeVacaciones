@@ -4,8 +4,10 @@ package com.coneval.gestionv.services;
 import com.coneval.gestionv.dto.UserRequest;
 import com.coneval.gestionv.entity.Cordinaciones;
 import com.coneval.gestionv.entity.Departamento;
+import com.coneval.gestionv.entity.Role;
 import com.coneval.gestionv.entity.User;
 import com.coneval.gestionv.repository.DepartamentoRepository;
+import com.coneval.gestionv.repository.RoleRepository;
 import com.coneval.gestionv.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
@@ -15,6 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,6 +32,9 @@ public class UserServices {
     private PasswordEncoder passwordEncoder;
     @Autowired
     private DepartamentoRepository departamentoRepository;
+
+    @Autowired
+    private RoleRepository roleRepository;
 
 
     @Transactional(readOnly = true)
@@ -45,6 +51,14 @@ public class UserServices {
 
     @Transactional
     public User save(User user) {
+
+        List<Role>roles= new ArrayList<>();
+
+        Optional<Role> optionalRoles=this.roleRepository.findByNombre("ROLE_USER");
+
+        optionalRoles.ifPresent(roles::add);
+
+        user.setRoles(roles);
 
     user.setPassword(passwordEncoder.encode(user.getPassword()));
 
