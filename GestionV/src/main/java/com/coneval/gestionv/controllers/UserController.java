@@ -35,7 +35,7 @@ public class UserController {
                 .body(Collections.singletonMap("error", "el usuario no se encontro por el id:" + id));
     }
 
-    @PostMapping
+    @PostMapping("/crear")
     public ResponseEntity<User> Crear(@RequestBody User user) {
 
         //JSON para editar
