@@ -3,6 +3,7 @@ package com.coneval.gestionv.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -41,6 +42,10 @@ public class User {
    private String email;
 
    private String password;
+
+   @Transient
+   @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+   private boolean admin;
 
 
 
