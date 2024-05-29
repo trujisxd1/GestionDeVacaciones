@@ -25,6 +25,7 @@ public class UserRequest {
     private String apellidoP;
     private String email;
     private String rfc;
+    private boolean admin;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private LocalDate fechaDeIngreso;
