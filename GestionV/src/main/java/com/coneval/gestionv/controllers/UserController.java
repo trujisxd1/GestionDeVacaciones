@@ -73,4 +73,11 @@ public class UserController {
         }
         return ResponseEntity.notFound().build();
     }
+
+    @GetMapping("/bus/{email}")
+
+    public ResponseEntity<?> buscarPorEmail(@PathVariable String email) {
+
+        return ResponseEntity.status(HttpStatus.OK).body(this.service.buscarPorEmail(email));
+    }
 }
