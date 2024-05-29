@@ -55,12 +55,17 @@ public class UserServices {
         List<Role>roles= new ArrayList<>();
 
         Optional<Role> optionalRoles=this.roleRepository.findByNombre("ROLE_USER");
-
         optionalRoles.ifPresent(roles::add);
+        if(user.isAdmin()){
+            Optional<Role> optionalRolAdmin=this.roleRepository.findByNombre("ROLE_ADMIN");
+            optionalRolAdmin.ifPresent(roles::add);
+        }
+
+
 
         user.setRoles(roles);
 
-    user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
 
         return repository.save(user);
     }
@@ -101,5 +106,14 @@ public class UserServices {
             return Optional.of(repository.save(userDb));
         }
         return Optional.empty();
+    }
+
+    public User buscarPorEmail(String email) {
+        Optional<User> userOptional = repository.findByEmail(email);
+
+        if (userOptional.isPresent()) {
+            return userOptional.get();
+        }
+        return null;
     }
 }
