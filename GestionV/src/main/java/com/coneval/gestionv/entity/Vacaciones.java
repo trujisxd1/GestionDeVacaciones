@@ -25,7 +25,7 @@ public class Vacaciones {
 
 
     @NotBlank
-    private String periodo;
+    private String periodo; //PERIODO 1 Y PERIODO 2
 
     private int diasSolicitados;
 
