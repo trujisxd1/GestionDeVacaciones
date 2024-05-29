@@ -6,6 +6,7 @@ import com.coneval.gestionv.entity.Cordinaciones;
 import com.coneval.gestionv.entity.Departamento;
 import com.coneval.gestionv.entity.Role;
 import com.coneval.gestionv.entity.User;
+import com.coneval.gestionv.repository.CordinacionRepository;
 import com.coneval.gestionv.repository.DepartamentoRepository;
 import com.coneval.gestionv.repository.RoleRepository;
 import com.coneval.gestionv.repository.UserRepository;
@@ -35,6 +36,9 @@ public class UserServices {
 
     @Autowired
     private RoleRepository roleRepository;
+
+    @Autowired
+    private CordinacionRepository cordinacionRepository;
 
 
     @Transactional(readOnly = true)
@@ -98,10 +102,10 @@ public class UserServices {
             }
 
 ////             Set Cordinaciones
-//            if (userRequest.getCordinacionId() != null) {
-//                Optional<Cordinaciones> cordinacionesOptional = cordinacionesRepository.findById(userRequest.getCordinacionId());
-//                cordinacionesOptional.ifPresent(userDb::setCordinacion);
-//            }
+            if (userRequest.getCordinacionId() != null) {
+                Optional<Cordinaciones> cordinacionesOptional = cordinacionRepository.findById(userRequest.getCordinacionId());
+                cordinacionesOptional.ifPresent(userDb::setCordinacion);
+            }
 
             return Optional.of(repository.save(userDb));
         }
