@@ -37,4 +37,10 @@ public class DepartamentoServices {
         return null;
     }
 
+    public void eliminar(Integer id){
+
+        this.departamentoRepository.deleteById(id);
+    }
+
+
 }
