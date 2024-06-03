@@ -1,0 +1,105 @@
+<form (ngSubmit)="onSubmit(userForm)" class="form form-control" #userForm="ngForm">
+  <div>
+    <input
+      placeholder="Nombre"
+      name="Nombre"
+      [(ngModel)]="user.nombre"
+      class="form-control my-2"
+      required
+      #nombre="ngModel"
+    />
+    @if (nombre.invalid && (nombre.dirty || nombre.touched)) {
+      @if (nombre.errors!['required']) {
+   <div class="alert alert-danger">El Nombre es requerido</div>
+      }
+
+    }
+  </div>
+  <div>
+    <input
+      placeholder="Apellido Materno"
+      name="apellidoM"
+      [(ngModel)]="user.apellidoM"
+      class="form-control my-2"
+      required
+      #apellidoM="ngModel"
+    />
+    @if (apellidoM.invalid && (apellidoM.dirty || apellidoM.touched)) {
+      @if (apellidoM.errors!['required']) {
+   <div class="alert alert-danger">El apellido es requerido</div>
+      }
+
+    }
+  </div>
+  <div>
+    <input
+      placeholder="Apellido Paterno"
+      name="apellidoP"
+      [(ngModel)]="user.apellidoP"
+      class="form-control my-2"
+      required
+      #apellidoP="ngModel"
+    />
+    @if (apellidoP.invalid && (apellidoP.dirty || apellidoP.touched)) {
+      @if (apellidoP.errors!['required']) {
+   <div class="alert alert-danger">El campo es requerido</div>
+      }
+
+    }
+  </div>
+  <div>
+    <input
+      placeholder="EMail"
+      name="email"
+      [(ngModel)]="user.email"
+      class="form-control my-2"
+      type="email"
+      required
+      email
+      #email="ngModel"
+    />
+    @if (email.invalid && (email.dirty || email.touched)) {
+      @if (email.errors!['required']) {
+   <div class="alert alert-danger">El campo es requerido</div>
+      }
+      @if (email.errors!['email']) {
+        <div class="text-danger">El email no tiene el formato correcto</div>
+      }
+    }
+  </div>
+  <div>
+    <input
+      placeholder="Contraseña"
+      name="password"
+      type="password"
+      [(ngModel)]="user.password"
+      class="form-control my-2"
+      required
+      #password="ngModel"
+    />
+    @if (password.invalid && (password.dirty || password.touched)) {
+      @if (password.errors!['required']) {
+   <div class="alert alert-danger">El campo es requerido</div>
+      }
+
+    }
+  </div>
+  <div>
+    <input
+      placeholder="rfc"
+      name="rfc"
+      [(ngModel)]="user.rfc"
+      class="form-control my-2"
+      required
+      #rfc="ngModel"
+    />
+    @if (rfc.invalid && (rfc.dirty || rfc.touched)) {
+      @if (rfc.errors!['required']) {
+   <div class="text-danger">El campo es requerido</div>
+      }
+
+    }
+  </div>
+
+  <div><button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">Crear Nuevo Usuario</button></div>
+</form>
