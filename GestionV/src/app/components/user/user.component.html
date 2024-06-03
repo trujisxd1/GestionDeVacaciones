@@ -1,32 +1,41 @@
 @if (users.length==0) {
-  <p class="alert alert-warning">No hay datos</p>
+<p class="alert alert-warning">No hay datos</p>
 
-  }@else {
-    <table class="table table-hover table-striped">
+}@else {
+<table class="table table-hover table-striped table-responsive">
   <thead>
     <tr>
-      <th>id</th>
-      <th>nombre</th>
-      <th>apellido materno</th>
-      <th>apellido </th>
-      <th>email</th>
-      <th>rfc</th>
 
+      <th>Nombre</th>
+      <th>Apellido Materno</th>
+      <th>Apellido</th>
+      <th>Email</th>
+      <th>Rfc</th>
+      <th>Fecha de ingreso</th>
+      <th>Puesto</th>
+      <th>Cordinacion</th>
+      <th>Acciones</th>
     </tr>
   </thead>
-    <tbody>
-      @for (user of users; track $index) {
+  <tbody>
+    @for (user of users; track $index) {
 
-         <tr>
-        <td>{{user.id}} </td>
-        <td>{{user.nombre}} </td>
-        <td>{{user.apellidoM}} </td>
-        <td> {{user.apellidoP}} </td>
-        <td>{{user.email}} </td>
-        <td>{{user.rfc}} </td>
-      </tr>
-      }
+    <tr>
 
-    </tbody>
-  </table>
-  }
+      <td>{{ user.nombre }}</td>
+      <td>{{ user.apellidoM }}</td>
+      <td>{{ user.apellidoP }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.rfc }}</td>
+      <td>{{ user.fechaDeIngreso }}</td>
+      <td>{{ user.puesto }}</td>
+      <td>{{ user.cordinacion }}</td>
+      <td>
+        <button class="btn btn-warning btn-sm">Editar</button>
+        <button class="btn btn-danger btn-sm">Eliminar</button>
+      </td>
+    </tr>
+    }
+  </tbody>
+</table>
+}
