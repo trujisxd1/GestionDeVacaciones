@@ -16,7 +16,10 @@ export class UserService {
     apellidoP:"Trujillo",
     email:"gutamvol262@gmail.com",
     password:"12345",
-    rfc:"ABGDS"
+    rfc:"ABGDS",
+    fechaDeIngreso:"21/02/2024",
+    puesto:"JR",
+    cordinacion:"ARG"
   },
   {
 
@@ -26,7 +29,10 @@ export class UserService {
     apellidoP:"Trujillo",
     email:"gutamvol263@gmail.com",
     password:"12345",
-    rfc:"ABGDASL"
+    rfc:"ABGDASL",
+    fechaDeIngreso:"21/02/2024",
+    puesto:"SR",
+    cordinacion:"MXT"
   }]
   constructor() { }
 
