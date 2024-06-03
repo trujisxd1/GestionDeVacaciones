@@ -12,11 +12,17 @@ import { User } from '../../models/user';
 export class FormUserComponent {
 
 user:User;
+maxDate: string;
 
 @Output() newUserEventEmitter:EventEmitter <User> =new EventEmitter()
 constructor(){
 
   this.user= new User()
+  const today = new Date();
+  const day = String(today.getDate()).padStart(2, '0');
+  const month = String(today.getMonth() + 1).padStart(2, '0'); // Los meses van de 0 a 11
+  const year = today.getFullYear();
+  this.maxDate = `${year}-${month}-${day}`
 }
 
 onSubmit(userForm:NgForm):void{
