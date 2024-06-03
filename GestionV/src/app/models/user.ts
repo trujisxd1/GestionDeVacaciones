@@ -9,6 +9,10 @@ export class User{
   email!:string
   password!:string
   rfc!:string
+  fechaDeIngreso!:string
+  puesto!:string
+  cordinacion!:string
+
 
 
 }
