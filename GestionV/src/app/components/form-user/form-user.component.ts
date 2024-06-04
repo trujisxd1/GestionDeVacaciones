@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { User } from '../../models/user';
 
@@ -11,7 +11,7 @@ import { User } from '../../models/user';
 })
 export class FormUserComponent {
 
-user:User;
+  @Input()user:User;
 maxDate: string;
 
 @Output() newUserEventEmitter:EventEmitter <User> =new EventEmitter()
@@ -29,7 +29,7 @@ onSubmit(userForm:NgForm):void{
 
   if(userForm.valid){
       this.newUserEventEmitter.emit(this.user)
-  console.log(this.user)
+
   }
 
   userForm.reset()
