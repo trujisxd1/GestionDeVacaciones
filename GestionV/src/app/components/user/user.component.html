@@ -14,7 +14,8 @@
       <th>Fecha de ingreso</th>
       <th>Puesto</th>
       <th>Cordinacion</th>
-      <th>Acciones</th>
+      <th>Eliminar</th>
+      <th>Editar</th>
     </tr>
   </thead>
   <tbody>
@@ -31,9 +32,9 @@
       <td>{{ user.puesto }}</td>
       <td>{{ user.cordinacion }}</td>
       <td>
-        <button class="btn btn-warning btn-sm">Editar</button>
-        <button class="btn btn-danger btn-sm">Eliminar</button>
+        <button class="btn btn-danger btn-sm" (click)="onRemove(user.id)">Eliminar</button>
       </td>
+      <td> <button class="btn btn-warning btn-sm" (click)="onSelectedUser(user)">Editar</button></td>
     </tr>
     }
   </tbody>
