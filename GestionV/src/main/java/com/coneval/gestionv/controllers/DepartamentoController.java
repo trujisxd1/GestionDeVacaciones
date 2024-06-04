@@ -7,9 +7,7 @@ import com.coneval.gestionv.services.DepartamentoServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 
@@ -21,7 +19,7 @@ public class DepartamentoController {
     @Autowired
     private DepartamentoServices departamentoServices;
 
-    @GetMapping("/departamentos")
+    @GetMapping("/puestos")
 
     public ResponseEntity<?> listarDepartamentos() {
 
@@ -29,6 +27,7 @@ public class DepartamentoController {
     }
 
 
+    @PostMapping("/puestos")
     public ResponseEntity<?> addDepartamento(Departamento departamento) {
 
         this.departamentoServices.save(departamento);
@@ -36,6 +35,7 @@ public class DepartamentoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(departamento);
     }
 
+    @DeleteMapping("/puestos")
     public ResponseEntity<?>eliminarDepartamento(Integer id) {
 
         try {
