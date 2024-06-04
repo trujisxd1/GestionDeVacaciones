@@ -4,6 +4,7 @@ import { UserService } from '../services/user.service';
 import { UserComponent } from './user/user.component';
 import { FormUserComponent } from './form-user/form-user.component';
 import { DatePipe } from '@angular/common';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'user-app',
@@ -18,9 +19,11 @@ export class UserAppComponent implements OnInit{
   title:string ='Listado de Usuarios'
 
   users:User[]=[]
+  userSelected:User;
 
   constructor(private service:UserService, private datepipe:DatePipe){
 
+    this.userSelected= new User()
 
   }
 
@@ -30,6 +33,18 @@ export class UserAppComponent implements OnInit{
 
     user.fechaDeIngreso=this.formatDate(user.fechaDeIngreso)
   this.users=[... this.users,{...user}]
+
+  Swal.fire({
+    title: "USUARIO CREADO",
+    text: "Creado con exito",
+    icon: "success"
+  });
+  }
+
+  delete(id:number):void{
+
+    this.users=this.users.filter(user => user.id !=id);
+
   }
   ngOnInit(): void {
 
@@ -42,5 +57,9 @@ export class UserAppComponent implements OnInit{
       return formattedDate ? formattedDate : date;
     }
     return '';
+  }
+
+  setSelectUser(userRow:User):void{
+this.userSelected={... userRow}
   }
 }
