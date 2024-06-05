@@ -35,4 +35,10 @@ onSubmit(userForm:NgForm):void{
   userForm.reset()
   userForm.resetForm()
 }
+onClear(userForm:NgForm):void{
+  this.user= new User()
+
+  userForm.reset()
+  userForm.resetForm()
+}
 }
