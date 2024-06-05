@@ -1,5 +1,5 @@
 <div align="left">
-    <img width="25%" src="https://www.benito.com/img/productes/imgProducte/UM363W-1400.png">
+    <img width="25%" src="https://www.bizneo.com/blog/wp-content/uploads/2020/05/control-de-vacaciones.jpg">
 </div>
 
 # Proyecto: Gestion de Vacaciones 
