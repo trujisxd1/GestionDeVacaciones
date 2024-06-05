@@ -2,7 +2,7 @@
     <img width="25%" src="https://www.benito.com/img/productes/imgProducte/UM363W-1400.png">
 </div>
 
-# Proyecto: Union Wallet - Paga rápido, paga con Union Wallet
+# Proyecto: Gestion de Vacaciones 
 
 Union Wallet es una billetera virtual moderna y segura que te permite realizar todas tus gestiones financieras. Consulta tus saldos y movimientos, realiza transferencias y pagos, gestiona tus productos financieros. La aplicación cuenta con un diseño intuitivo y fácil de usar, además de los más altos estándares de seguridad para proteger tu información.
 
