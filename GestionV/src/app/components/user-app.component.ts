@@ -17,6 +17,7 @@ export class UserAppComponent implements OnInit {
   title: string = 'Listado de Usuarios';
   users: User[] = [];
   userSelected: User;
+  open:boolean=false
 
   constructor(private service: UserService, private datepipe: DatePipe) {
     this.userSelected = new User();
@@ -40,6 +41,7 @@ export class UserAppComponent implements OnInit {
       });
     }
     this.userSelected = new User();
+    this.setOpen()
   }
 
   delete(id: number): void {
@@ -72,7 +74,12 @@ export class UserAppComponent implements OnInit {
 
   setSelectUser(userRow: User): void {
     this.userSelected = { ...userRow };
+    this.open=true
 
+    }
+
+    setOpen(){
+      this.open=!this.open
     }
 
 }
