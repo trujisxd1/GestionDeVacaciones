@@ -14,6 +14,7 @@ export class FormUserComponent {
   @Input()user:User;
 maxDate: string;
 
+@Output() openEventEmitter= new EventEmitter()
 @Output() newUserEventEmitter:EventEmitter <User> =new EventEmitter()
 constructor(){
 
@@ -40,5 +41,8 @@ onClear(userForm:NgForm):void{
 
   userForm.reset()
   userForm.resetForm()
+}
+onOpen(){
+  this.openEventEmitter.emit()
 }
 }
