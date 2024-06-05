@@ -79,7 +79,7 @@ Union Wallet es una billetera virtual moderna y segura que te permite realizar t
 	<table>
 		<tr>
             <td><img width="50" src="https://avatars.githubusercontent.com/u/18133?s=200&v=4" alt="Git" title="Git"/></td>
-            <td><img width="50" src="https://avatars.githubusercontent.com/u/115821790?s=400&u=bdf0d59826d3339fb2f1582c16221da65fe0b314&v=4" alt="IntelliJ" title="IntelliJ"/></td>
+            <td><img width="50" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZFPAN1ifCYRB2Fz7o9k91gBAmZ6KCiFHdGQ&s" alt="IntelliJ"/></td>
            
             <td><img width="50" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqPARNK1AQ86vt-kFVrGjRrJtZUNcT3-szdg&s" alt="Postman" title="Postman"/></td>
           
