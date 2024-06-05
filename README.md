@@ -28,9 +28,9 @@ Union Wallet es una billetera virtual moderna y segura que te permite realizar t
 	</table>
 </div>
 
-## Desarrollo Front-end
+## Desarrollo Full Stack
 
-|                                                                                                                                <img src="https://avatars.githubusercontent.com/u/54690832?v=4" width=80/>                                                                                                                                 |
+|                                                                                                                                <img src="https://github.com/trujisxd1" width=80/>                                                                                                                                 |
 | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
 |                                                                                                                                                              **Lizz Medina**                                                                                                                                                              |
 | <a href="https://www.linkedin.com/in/liza-medina/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> <a href="https://github.com/lizzmedina"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> |
