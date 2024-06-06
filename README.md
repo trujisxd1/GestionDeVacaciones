@@ -4,7 +4,9 @@
 
 # Proyecto: Gestion de Vacaciones 
 
-Union Wallet es una billetera virtual moderna y segura que te permite realizar todas tus gestiones financieras. Consulta tus saldos y movimientos, realiza transferencias y pagos, gestiona tus productos financieros. La aplicación cuenta con un diseño intuitivo y fácil de usar, además de los más altos estándares de seguridad para proteger tu información.
+Vacation Manager es una plataforma moderna y segura diseñada para optimizar la gestión de tus vacaciones. Con Vacation Manager, puedes planificar y administrar tus días libres de manera eficiente y sin complicaciones. Consulta tu saldo de días disponibles, realiza solicitudes de vacaciones y obtén aprobaciones rápidamente.
+
+La aplicación ofrece una interfaz intuitiva y fácil de usar, permitiéndote gestionar tus tiempos de descanso con solo unos pocos clics. Además, Vacation Manager garantiza la protección de tu información personal mediante los más altos estándares de seguridad.
 
 ## Características y Funcionalidades de la aplicación:
 
