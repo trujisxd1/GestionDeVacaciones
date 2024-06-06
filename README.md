@@ -68,20 +68,6 @@ La aplicación ofrece una interfaz intuitiva y fácil de usar, permitiéndote ge
 - [x] Notificaciones por Correo Electrónico: Implementación de un sistema de notificaciones vía correo electrónico para usuarios recién registrados y en cada transacción de dinero realizada.
 - [x] Empaquetado en Dockerfile:El proyecto está empaquetado en un Dockerfile, lo que facilita la replicación del entorno de desarrollo y producción.
 
-### Desarrollado utilizando:
-
-<div align="center">
-	<table>
-		<tr>
-            <td><img width="50" src="https://avatars.githubusercontent.com/u/18133?s=200&v=4" alt="Git" title="Git"/></td>
-            <td><img width="50" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZFPAN1ifCYRB2Fz7o9k91gBAmZ6KCiFHdGQ&s" alt="IntelliJ"/></td>
-           
-            <td><img width="50" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqPARNK1AQ86vt-kFVrGjRrJtZUNcT3-szdg&s" alt="Postman" title="Postman"/></td>
-          </tr>
-	</table>
-</div>
-
----
 
 
 ## Imagenes Del Proyecto
