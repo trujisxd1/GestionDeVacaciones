@@ -56,8 +56,7 @@ En resumen, una página de gestión de vacaciones combina funcionalidades de sol
 	      <td><img width="50" src="https://github.com/trujisxd1/GestionDeVacaciones/assets/169479826/803e4d64-bd09-42b8-b93d-9ef5e5aebdc7" alt="Angular" title="Angular"/></td>
 	    <td><img width="50" src="https://github.com/trujisxd1/GestionDeVacaciones/assets/169479826/9b89664f-2dee-4811-b36b-c1774f77fc99" alt="Bootstrap" title="Bootstrap"/></td>
 	     <td><img width="50" src="https://github.com/trujisxd1/GestionDeVacaciones/assets/169479826/efb8d7e3-1074-4895-9f2e-655a89b1b870" alt="Typescript" title="Typescript"/></td>
-
-		</tr>
+          </tr>
 	</table>
 </div>
 
