@@ -47,27 +47,13 @@ En resumen, una página de gestión de vacaciones combina funcionalidades de sol
 - [x] Validación de datos
 - [x] Comunicación con el backend: Obtener datos y funcionalidades del servidor, como solicitar información de una base de datos 
 
-### Desarrollado utilizando:
 
 <div align="center">
 	<table>
 		<tr>
-            <td><img width="50" src="https://github.com/trujisxd1/GestionDeVacaciones/assets/169479826/8a89dfa1-60b6-48f8-b7bb-0b92e2ea86cb" alt="CCS" title="CCS"/></td>
-	      <td><img width="50" src="https://github.com/trujisxd1/GestionDeVacaciones/assets/169479826/803e4d64-bd09-42b8-b93d-9ef5e5aebdc7" alt="Angular" title="Angular"/></td>
-	    <td><img width="50" src="https://github.com/trujisxd1/GestionDeVacaciones/assets/169479826/9b89664f-2dee-4811-b36b-c1774f77fc99" alt="Bootstrap" title="Bootstrap"/></td>
-	     <td><img width="50" src="https://github.com/trujisxd1/GestionDeVacaciones/assets/169479826/efb8d7e3-1074-4895-9f2e-655a89b1b870" alt="Typescript" title="Typescript"/></td>
           </tr>
 	</table>
 </div>
-
----
-
-## Desarrollo Back-end
-
-|                                                                                                                             <img src="https://avatars.githubusercontent.com/u/54690832?v=4" width=80/>                                                                                                                              |                                                                                                                                                <img src="https://avatars.githubusercontent.com/u/54690832?v=4" width=80/>                                                                                                                                                 |                                                                                                                                        <img src="https://avatars.githubusercontent.com/u/54690832?v=4" width=80/>                                                                                                                                        |                                                                                                                                  <img src="https://avatars.githubusercontent.com/u/54690832?v=4" width=80/>                                                                                                                                   |                                                                                                                             <img src="https://avatars.githubusercontent.com/u/54690832?v=4" width=80/>                                                                                                                              |
-| :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-|                                                                                                                                                          **Daiana Amado**                                                                                                                                                           |                                                                                                                                                                           **Antonio Terrazas**                                                                                                                                                                            |                                                                                                                                                                   **Federico Sierra**                                                                                                                                                                    |                                                                                                                                                             **Bruno Mastrangelo**                                                                                                                                                             |                                                                                                                                                         **Franklin Parra**                                                                                                                                                          |
-| <a href="https://www.linkedin.com/in/daiana-amado/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> <a href="https://github.com/Daiana-Amado"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> | <a href="https://www.linkedin.com/in/jose-antonio-terrazas-ortega-53415a21a/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> <a href="https://github.com/AntonioTerrazas"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> | <a href="https://www.linkedin.com/in/federico-sierra-516030235/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> <a href="https://github.com/federicojsd"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> | <a href="https://www.linkedin.com/in/mastrangelobruno"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> <a href="https://github.com/mastranga/"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> | <a href="https://linkedin.com/in/xpfrankdev"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> <a href="https://github.com/xpFrankDev"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> |
 
 ## Tareas realizadas por el Back-end
 
@@ -90,42 +76,6 @@ En resumen, una página de gestión de vacaciones combina funcionalidades de sol
 	</table>
 </div>
 
----
-
-## Testing QA
-
-|                                                       <img src="https://avatars.githubusercontent.com/u/54690832?v=4" width=80/>                                                        |
-| :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-|                                                                                    **Airan España**                                                                                     |
-| <a href="https://www.linkedin.com/in/airan-españa-18a25a54/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
-
-
-### Desarrollado utilizando:
-
-<div align="center">
-	<table>
-		<tr>
-            <td><img width="50" src="https://raw.githubusercontent.com/No-Country/c17-61-t-java.old/Produccion/extra/postman-icon.webp" alt="Postman" title="Postman"/></td>
-						<td><img width="50" src="https://github.com/No-Country/c17-61-t-java/blob/Develop/extra/imgs/GoogleSheets.png" alt="Google Sheets" title="Google Sheets"/></td>
-		</tr>
-	</table>
-</div>
-
----
-
-## Organización
-
-<div align="center">
-	<table>
-		<tr>
-            <td><img width="50" src="https://github.com/No-Country/c17-61-t-java.old/blob/Produccion/extra/trello.png?raw=true" alt="Trello" title="Trello"/></td>
-            <td><img width="40" src="https://camo.githubusercontent.com/e39266f11f0dd5202c8ac61bbc08fd633086c9c4c845334890e6c6720e231c68/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f64657669636f6e732f64657669636f6e2f69636f6e732f736c61636b2f736c61636b2d6f726967696e616c2e737667" alt="Slack" title="Slack"/></td>
-            <td><img width="50" src="https://camo.githubusercontent.com/449f9e451ea3c11b7c466f29932d91a48a8748a4838b000868dd58ec7e372b24/68747470733a2f2f696d672e69636f6e73382e636f6d2f636f6c6f722f3438302f646973636f72642d6e65772d6c6f676f2e706e67" alt="Discord" title="Discord"/></td>
-		</tr>
-	</table>
-</div>
-
----
 
 ## Imagenes Del Proyecto
 
