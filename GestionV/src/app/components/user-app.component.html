@@ -1,26 +1,10 @@
 
 
+<app-navbar [users]="users"/>
 <div class="container my-4">
-  <h3>{{title}} </h3>
 
-
-  <button class="btn btn-primary my-3" (click)="setOpen()"> {{open == true? "Cerrar": "Crear Nuevo Usuario"}} </button>
-  <div class="row">
-    <div class="col my-8">
-      <usuarios [users]="users" (idUserEventEmitter)="delete($event)" (selectUserEmitter)="setSelectUser($event)"/>
-    </div>
-
-
-  </div>
+  <router-outlet></router-outlet>
 </div>
 
 
-    @if (open) {
-
-
-      <div class="abrir-modal animacion fadeIn"></div>
-
-        <form-user (newUserEventEmitter)="addUser($event)" [user]="userSelected" (openEventEmitter)="setOpen()"/>
-
-    }
 
