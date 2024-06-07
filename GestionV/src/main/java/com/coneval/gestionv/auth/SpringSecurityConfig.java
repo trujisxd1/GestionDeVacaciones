@@ -42,7 +42,10 @@ public class SpringSecurityConfig {
     }
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        return http.authorizeHttpRequests(auth -> auth.requestMatchers(HttpMethod.GET,"/api/v1/listar").hasRole("ADMIN")
+        return http.authorizeHttpRequests(auth -> auth.requestMatchers(HttpMethod.GET,"/api/v1/listar").permitAll()
+                        .requestMatchers(HttpMethod.GET,"/api/v1/puestos").permitAll()
+                        .requestMatchers(HttpMethod.GET,"/api/v1/cordinaciones/listar").permitAll()
+
                         .requestMatchers(HttpMethod.POST,"/api/v1").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.PUT,"api/v1/editar/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.POST,"api/v1/vacaciones/**").hasRole("ADMIN")
@@ -63,7 +66,7 @@ public class SpringSecurityConfig {
         configuration.setAllowedOrigins(Arrays.asList("*"));
         configuration.setAllowedMethods(Arrays.asList("POST","GET","PUT","DELETE","OPTIONS"));
         configuration.setAllowedHeaders(Arrays.asList("Authorization","Cache-Control","Content-Type"));
-        configuration.setAllowCredentials(true);
+        configuration.setAllowCredentials(false);
 
         UrlBasedCorsConfigurationSource source=new UrlBasedCorsConfigurationSource();
 
