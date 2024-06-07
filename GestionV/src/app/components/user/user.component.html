@@ -35,8 +35,8 @@
       <td>{{ user.email }}</td>
       <td>{{ user.rfc }}</td>
       <td>{{ user.fechaDeIngreso }}</td>
-      <td>{{ user.puesto }}</td>
-      <td>{{ user.cordinacion }}</td>
+      <td>{{ user.puesto?.puesto  || 'N/A'}}</td>
+      <td>{{ user.cordinacion?.nombre || 'N/A' }}</td>
       <td>
         <button class="btn btn-danger btn-sm" (click)="onRemove(user.id)">Eliminar</button>
       </td>
