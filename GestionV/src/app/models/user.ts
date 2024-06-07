@@ -1,3 +1,5 @@
+import { Cordinacion } from "./cordinacion"
+import { Puesto } from "./puesto"
 
 
 export class User{
@@ -10,8 +12,8 @@ export class User{
   password!:string
   rfc!:string
   fechaDeIngreso!:string
-  puesto!:string
-  cordinacion!:string
+  puesto!: Puesto
+  cordinacion!: Cordinacion
 
 
 
