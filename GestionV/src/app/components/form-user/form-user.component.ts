@@ -4,6 +4,9 @@ import { User } from '../../models/user';
 import { SharingDataService } from '../../services/sharing-data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { Puesto } from '../../models/puesto';
+import { UserService } from '../../services/user.service';
+import { Cordinacion } from '../../models/cordinacion';
 
 @Component({
   selector: 'form-user',
@@ -15,11 +18,13 @@ import Swal from 'sweetalert2';
 export class FormUserComponent implements OnInit {
 
   user:User;
+  puestos: Puesto[] = [];
+  cordinaciones:Cordinacion[]=[]
 maxDate: string;
 
 
 
-constructor(private sharingData:SharingDataService, private route:ActivatedRoute){
+constructor(private sharingData:SharingDataService, private route:ActivatedRoute, private userService:UserService){
 
   this.user= new User()
   const today = new Date();
@@ -33,6 +38,8 @@ constructor(private sharingData:SharingDataService, private route:ActivatedRoute
 }
   ngOnInit(): void {
 
+    this.loadCordinacion()
+    this.loadPuestos()
     this.sharingData.selectUserEvenEmitter.subscribe(user=>this.user=user)
 
   this.route.paramMap.subscribe(params => {
@@ -67,5 +74,25 @@ onClear(userForm:NgForm):void{
     icon: "success"
   });
 }
+loadPuestos(): void {
+  this.userService.findAllPuesto().subscribe(
+    (data: Puesto[]) => {
+      this.puestos = data;
+    },
+    (error) => {
+      console.error('Error fetching puestos:', error);
+    }
+  );
+}
 
+loadCordinacion(): void {
+  this.userService.findAllCordinacion().subscribe(
+    (data: Cordinacion[]) => {
+      this.cordinaciones = data;
+    },
+    (error) => {
+      console.error('Error fetching puestos:', error);
+    }
+  );
+}
 }
