@@ -93,6 +93,8 @@ export class UserAppComponent implements OnInit {
       const user= this.users.find(user=>user.id==id)
       this.sharingData.selectUserEvenEmitter.emit(user)
     })
+
+    console.log(this.users)
   }
 
 
