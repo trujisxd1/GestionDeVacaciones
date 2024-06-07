@@ -122,32 +122,42 @@
             } }
           </div>
           <div>
-            <input
-              placeholder="Puesto"
+            <select
               name="puesto"
               [(ngModel)]="user.puesto"
               class="form-control my-2"
               required
               #puesto="ngModel"
-            />
-            @if (puesto.invalid && (puesto.dirty || puesto.touched)) { @if
-            (puesto.errors!['required']) {
-            <div class="text-danger">El campo puesto es requerido</div>
-            } }
+            >
+              <option value="" disabled selected>Seleccione un puesto</option>
+              @for (puesto of puestos; track $index) {
+
+                <option [value]="puesto.id">{{ puesto.puesto }}</option>
+              }
+            </select>
+            @if (puesto.invalid && (puesto.dirty || puesto.touched)) {
+              @if (puesto.errors!['required']) {
+              <div class="text-danger">El campo cordinacion es requerido</div>
+              } }
           </div>
           <div>
-            <input
-              placeholder="Cordinacion"
+            <select
               name="cordinacion"
               [(ngModel)]="user.cordinacion"
               class="form-control my-2"
               required
               #cordinacion="ngModel"
-            />
+            >
+              <option value="" disabled selected>Seleccione una cordinacion</option>
+              @for (cordinacion of cordinaciones; track $index) {
+
+                <option [value]="cordinacion.id">{{ cordinacion.nombre }}</option>
+              }
+            </select>
             @if (cordinacion.invalid && (cordinacion.dirty || cordinacion.touched)) {
-            @if (cordinacion.errors!['required']) {
-            <div class="text-danger">El campo cordinacion es requerido</div>
-            } }
+              @if (cordinacion.errors!['required']) {
+              <div class="text-danger">El campo cordinacion es requerido</div>
+              } }
           </div>
           <div>
             <button type="submit" class="btn btn-primary m-2" [disabled]="userForm.invalid">
