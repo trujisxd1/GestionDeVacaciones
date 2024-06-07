@@ -13,6 +13,7 @@ import java.util.HashMap;
 
 @RestController
 @RequestMapping("/api/v1")
+@CrossOrigin("*")
 public class DepartamentoController {
 
 
