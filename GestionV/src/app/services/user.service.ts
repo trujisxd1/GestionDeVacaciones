@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/user';
-import { Observable, of } from 'rxjs';
+import { Observable, map, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -8,37 +9,14 @@ import { Observable, of } from 'rxjs';
 export class UserService {
 
 
-  private users:User[]=[{
-
-    id:1,
-    nombre:"gustavo",
-    apellidoM:"Martinez",
-    apellidoP:"Trujillo",
-    email:"gutamvol262@gmail.com",
-    password:"12345",
-    rfc:"ABGDS",
-    fechaDeIngreso:"21/02/2024",
-    puesto:"JR",
-    cordinacion:"ARG"
-  },
-  {
-
-    id:2,
-    nombre:"Juan",
-    apellidoM:"Martinez",
-    apellidoP:"Trujillo",
-    email:"gutamvol263@gmail.com",
-    password:"12345",
-    rfc:"ABGDASL",
-    fechaDeIngreso:"21/02/2024",
-    puesto:"SR",
-    cordinacion:"MXT"
-  }]
-  constructor() { }
+  private users:User[]=[]
+  constructor(private http:HttpClient) { }
 
   findAll():Observable<User[]>{
 
 
-    return of(this.users);
+    return this.http.get('http://localhost:8080/api/v1/listar').pipe(
+      map((users:any) => users as User[])
+    )
   }
 }
