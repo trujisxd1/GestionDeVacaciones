@@ -1,6 +1,6 @@
 
 export class Cordinacion{
 
-  id: number = 0;
-  nombre: string = '';
+  id!: number
+  nombre!: string
 }
