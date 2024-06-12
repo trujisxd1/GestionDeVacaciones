@@ -14,6 +14,8 @@ export class UserService {
   private users:User[]=[]
   private puestos:Puesto[]=[]
   private cordinaciones:Cordinacion[]=[]
+
+  private url:string='http://localhost:8080/api/v1'
   constructor(private http:HttpClient) { }
 
   findAll():Observable<User[]>{
@@ -38,5 +40,21 @@ findAllCordinacion():Observable<Cordinacion[]>{
   return this.http.get("http://localhost:8080/api/v1/cordinaciones/listar").pipe(
     map((cordinaciones:any)=> cordinaciones as Cordinacion[])
   )
+}
+findById(id:number):Observable<User>{
+
+  return this.http.get<User>("http://localhost:8080/api/v1/buscar/" + id)
+
+}
+create(user:User):Observable<User>{
+
+  return this.http.post<User>("http://localhost:8080/api/v1/crear",user)
+}
+
+update(user:User):Observable<User>{
+
+  return this.http.put<User>(`http://localhost:8080/api/v1/editar/${user.id}`,user)
+
+
 }
 }
