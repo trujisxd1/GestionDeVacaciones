@@ -13,86 +13,97 @@ import { Cordinacion } from '../../models/cordinacion';
   standalone: true,
   imports: [FormsModule],
   templateUrl: './form-user.component.html',
-
 })
 export class FormUserComponent implements OnInit {
 
-  user:User;
+  user: User = new User();
   puestos: Puesto[] = [];
-  cordinaciones:Cordinacion[]=[]
-maxDate: string;
+  cordinaciones: Cordinacion[] = [];
+  maxDate: string;
+  puiestoId!:number
 
 
 
-constructor(private sharingData:SharingDataService, private route:ActivatedRoute, private userService:UserService){
 
-  this.user= new User()
-  const today = new Date();
-  const day = String(today.getDate()).padStart(2, '0');
-  const month = String(today.getMonth() + 1).padStart(2, '0'); // Los meses van de 0 a 11
-  const year = today.getFullYear();
-  this.maxDate = `${year}-${month}-${day}`
-  this.user = new User()
+  constructor(
+    private sharingData: SharingDataService,
+    private route: ActivatedRoute,
+    private userService: UserService
+  ) {
+    const today = new Date();
+    const day = String(today.getDate()).padStart(2, '0');
+    const month = String(today.getMonth() + 1).padStart(2, '0'); // Los meses van de 0 a 11
+    const year = today.getFullYear();
+    this.maxDate = `${year}-${month}-${day}`;
 
+    // Inicializar user.puesto y user.cordinacion
+    this.user.puesto = new Puesto();
+    this.user.cordinacion = new Cordinacion();
+  }
 
-}
   ngOnInit(): void {
+    this.loadCordinacion();
+    this.loadPuestos();
 
-    this.loadCordinacion()
-    this.loadPuestos()
-    this.sharingData.selectUserEvenEmitter.subscribe(user=>this.user=user)
+    this.route.paramMap.subscribe(params => {
+      const id: number = +(params.get('id') || '0');
+      if (id > 0) {
+        this.userService.findById(id).subscribe(user => {
+          this.user = user;
 
-  this.route.paramMap.subscribe(params => {
 
-    const id: number=+(params.get('id')|| '0')
-
-    if(id>0){
-      this.sharingData.findUserByIdEventEmitter.emit(id)
-    }
-  })
+          
+        });
+      }
+    });
   }
 
-onSubmit(userForm:NgForm):void{
+  onSubmit(userForm: NgForm): void {
+    if (userForm.valid ) {
 
-  if(userForm.valid){
-      this.sharingData.newUserEventEmitter.emit(this.user)
+      this.puiestoId=this.user.puesto.id
+      this.sharingData.newUserEventEmitter.emit(this.user);
 
+      console.log("id puesto ",this.puiestoId)
+      console.log("usuario",this.user);
+
+      userForm.reset();
+      userForm.resetForm();
+    }
   }
 
-  userForm.reset()
-  userForm.resetForm()
-}
-onClear(userForm:NgForm):void{
-  this.user= new User()
+  onClear(userForm: NgForm): void {
+    this.user = new User();
+    this.user.puesto = new Puesto(); // Inicializar puesto
+    this.user.cordinacion = new Cordinacion(); // Inicializar cordinacion
+    userForm.reset();
+    userForm.resetForm();
+    Swal.fire({
+      title: "Formulario limpio",
+      text: "Formulario limpiado con éxito",
+      icon: "success"
+    });
+  }
 
-  userForm.reset()
-  userForm.resetForm()
+  loadPuestos(): void {
+    this.userService.findAllPuesto().subscribe(
+      (data: Puesto[]) => {
+        this.puestos = data;
+      },
+      (error) => {
+        console.error('Error fetching puestos:', error);
+      }
+    );
+  }
 
-  Swal.fire({
-    title: "Formulario limpio",
-    text: "success",
-    icon: "success"
-  });
-}
-loadPuestos(): void {
-  this.userService.findAllPuesto().subscribe(
-    (data: Puesto[]) => {
-      this.puestos = data;
-    },
-    (error) => {
-      console.error('Error fetching puestos:', error);
-    }
-  );
-}
-
-loadCordinacion(): void {
-  this.userService.findAllCordinacion().subscribe(
-    (data: Cordinacion[]) => {
-      this.cordinaciones = data;
-    },
-    (error) => {
-      console.error('Error fetching puestos:', error);
-    }
-  );
-}
+  loadCordinacion(): void {
+    this.userService.findAllCordinacion().subscribe(
+      (data: Cordinacion[]) => {
+        this.cordinaciones = data;
+      },
+      (error) => {
+        console.error('Error fetching cordinaciones:', error);
+      }
+    );
+  }
 }
