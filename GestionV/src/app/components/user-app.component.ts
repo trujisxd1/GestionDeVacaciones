@@ -27,8 +27,16 @@ export class UserAppComponent implements OnInit {
     this.sharingData.newUserEventEmitter.subscribe(user=>{
 
       if (user.id > 0) {
-        this.users = this.users.map(u => u.id === user.id ? { ...user, } : u);
-        this.router.navigate(['/usuarios'],{state:{users:this.users}})
+
+        this.service.update(user).subscribe(userUpdate =>{
+          this.users = this.users.map(u => u.id === userUpdate.id ? { ...userUpdate, } : u);
+
+
+          this.router.navigate(['/usuarios'],{state:{users:this.users}})
+          console.log("crear usuario usuer", user)
+          console.log("crear usuario usuernew", userUpdate)
+        })
+
         Swal.fire({
           title: "USUARIO ACTUALIZADO",
           text: "Actualizado con éxito",
@@ -36,8 +44,14 @@ export class UserAppComponent implements OnInit {
         });
       } else {
 
-        this.users = [...this.users, { ...user }];
-        this.router.navigate(['/usuarios'],{state:{users:this.users}})
+        this.service.create(user).subscribe(userNew =>{
+
+          this.users = [...this.users, { ...userNew }];
+          this.router.navigate(['/usuarios'],{state:{users:this.users}})
+
+
+        })
+
         Swal.fire({
           title: "USUARIO CREADO",
           text: "Creado con éxito",
