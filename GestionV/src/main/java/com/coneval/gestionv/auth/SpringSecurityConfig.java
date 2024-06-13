@@ -45,9 +45,15 @@ public class SpringSecurityConfig {
         return http.authorizeHttpRequests(auth -> auth.requestMatchers(HttpMethod.GET,"/api/v1/listar").permitAll()
                         .requestMatchers(HttpMethod.GET,"/api/v1/puestos").permitAll()
                         .requestMatchers(HttpMethod.GET,"/api/v1/cordinaciones/listar").permitAll()
+                        .requestMatchers(HttpMethod.GET,"/api/v1/buscar/**").permitAll()
+                        .requestMatchers(HttpMethod.POST,"/api/v1/crear").permitAll()
+                        .requestMatchers(HttpMethod.PUT,"/api/v1/editar/**").permitAll()
+                        .requestMatchers(HttpMethod.DELETE,"/api/v1/eliminar/**").permitAll()
 
-                        .requestMatchers(HttpMethod.POST,"/api/v1").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.PUT,"api/v1/editar/**").hasRole("ADMIN")
+
+
+//                        .requestMatchers(HttpMethod.POST,"/api/v1").hasRole("ADMIN")
+//                        .requestMatchers(HttpMethod.PUT,"api/v1/editar/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.POST,"api/v1/vacaciones/**").hasRole("ADMIN")
                         .anyRequest().authenticated())
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
