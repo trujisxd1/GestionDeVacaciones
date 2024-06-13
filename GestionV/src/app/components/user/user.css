@@ -1,0 +1,16 @@
+/* custom-styles.css */
+
+.custom-table {
+  width: 100%; /* Ajusta el ancho de la tabla al 100% */
+  /* Otros estilos específicos de la tabla */
+}
+
+.custom-th {
+  font-size: 14px; /* Tamaño de fuente para los encabezados */
+  /* Otros estilos para los encabezados de las columnas */
+}
+
+.custom-td {
+  font-size: 14px; /* Tamaño de fuente para las celdas */
+  /* Otros estilos para las celdas de la tabla */
+}
