@@ -57,4 +57,10 @@ update(user:User):Observable<User>{
 
 
 }
+
+remove(id:number):Observable<void>{
+
+  return this.http.delete<void>(`http://localhost:8080/api/v1/eliminar/${id}`)
+}
+
 }
