@@ -32,7 +32,7 @@ export class UserAppComponent implements OnInit {
           this.users = this.users.map(u => u.id === userUpdate.id ? { ...userUpdate, } : u);
 
 
-          this.router.navigate(['/usuarios'],{state:{users:this.users}})
+          this.router.navigate(['/usuarios'])
           console.log("crear usuario usuer", user)
           console.log("crear usuario usuernew", userUpdate)
         })
@@ -47,7 +47,7 @@ export class UserAppComponent implements OnInit {
         this.service.create(user).subscribe(userNew =>{
 
           this.users = [...this.users, { ...userNew }];
-          this.router.navigate(['/usuarios'],{state:{users:this.users}})
+          this.router.navigate(['/usuarios'])
 
 
         })
@@ -76,10 +76,15 @@ export class UserAppComponent implements OnInit {
         confirmButtonText: "Si, borrar"
       }).then((result) => {
         if (result.isConfirmed) {
-          this.users = this.users.filter(user => user.id !== id);
+
+          this.service.remove(id).subscribe(()=>{
+             this.users = this.users.filter(user => user.id != id);
           this.router.navigate(['/usuarios/create'],{skipLocationChange:true}).then(()=>{
-            this.router.navigate(['/usuarios'],{state:{users:this.users}})
+            this.router.navigate(['/usuarios'])
           })
+          })
+
+
           Swal.fire({
             title: "Borrado con exito!",
             text: "Registro borrado",
@@ -110,6 +115,7 @@ export class UserAppComponent implements OnInit {
 
     console.log(this.users)
   }
+
 
 
 
