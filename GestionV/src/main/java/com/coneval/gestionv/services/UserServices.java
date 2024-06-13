@@ -82,7 +82,7 @@ public class UserServices {
     }
 
     @Transactional
-    public Optional<User>actualizar(UserRequest userRequest, Integer id){
+    public Optional<User>actualizar(User userRequest, Integer id){
 
         Optional<User> userOptional = repository.findById(id);
 
@@ -94,18 +94,25 @@ public class UserServices {
             userDb.setNombre(userRequest.getNombre());
             userDb.setRfc(userRequest.getRfc());
             userDb.setFechaDeIngreso(userRequest.getFechaDeIngreso());
+            userDb.setCordinacion(userRequest.getCordinacion());
+            userDb.setPuesto(userRequest.getPuesto());
+
+//            System.out.println("Actualizando usuario con ID: " + id);
+//            System.out.println("Puesto ID recibido: " + userRequest.getPuestoId());
+//            System.out.println("Cordinacion ID recibido: " + userRequest.getCordinacionId());
 
             // Set Departamento
-            if (userRequest.getPuestoId() != null) {
-                Optional<Departamento> departamentoOptional = departamentoRepository.findById(userRequest.getPuestoId());
-                departamentoOptional.ifPresent(userDb::setPuesto);
-            }
-
-////             Set Cordinaciones
-            if (userRequest.getCordinacionId() != null) {
-                Optional<Cordinaciones> cordinacionesOptional = cordinacionRepository.findById(userRequest.getCordinacionId());
-                cordinacionesOptional.ifPresent(userDb::setCordinacion);
-            }
+//            if (userRequest.getPuestoId() != null) {
+//                Optional<Departamento> departamentoOptional = departamentoRepository.findById(userRequest.getPuestoId());
+//                System.out.println("hola" + userRequest.getPuestoId());
+//                departamentoOptional.ifPresent(userDb::setPuesto);
+//            }
+////
+////////             Set Cordinaciones
+//            if (userRequest.getCordinacionId() != null) {
+//                Optional<Cordinaciones> cordinacionesOptional = cordinacionRepository.findById(userRequest.getCordinacionId());
+//                cordinacionesOptional.ifPresent(userDb::setCordinacion);
+//            }
 
             return Optional.of(repository.save(userDb));
         }

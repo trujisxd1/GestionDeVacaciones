@@ -28,7 +28,7 @@ public class UserRequest {
     private boolean admin;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
-    private LocalDate fechaDeIngreso;
+    private String fechaDeIngreso;
     private Integer puestoId;
     private Integer cordinacionId;
 
