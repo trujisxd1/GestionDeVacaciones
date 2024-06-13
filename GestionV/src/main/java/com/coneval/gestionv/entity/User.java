@@ -61,8 +61,8 @@ public class User {
             uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id","role_id"})})
    private List<Role>roles;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
-    private LocalDate fechaDeIngreso;
+
+    private String fechaDeIngreso;
 
     @ManyToOne
     @JoinColumn(name = "puesto_id")
