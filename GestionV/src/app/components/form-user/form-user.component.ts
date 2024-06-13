@@ -15,13 +15,10 @@ import { Cordinacion } from '../../models/cordinacion';
   templateUrl: './form-user.component.html',
 })
 export class FormUserComponent implements OnInit {
-
   user: User = new User();
   puestos: Puesto[] = [];
   cordinaciones: Cordinacion[] = [];
   maxDate: string;
-  puiestoId!:number
-
 
 
 
@@ -51,26 +48,29 @@ export class FormUserComponent implements OnInit {
         this.userService.findById(id).subscribe(user => {
           this.user = user;
 
-
-          
+          if (!this.user.puesto) {
+            this.user.puesto = new Puesto();
+          }
+          if (!this.user.cordinacion) {
+            this.user.cordinacion = new Cordinacion();
+          }
         });
       }
     });
   }
 
-  onSubmit(userForm: NgForm): void {
-    if (userForm.valid ) {
+onSubmit(userForm: NgForm): void {
+  if (userForm.valid) {
 
-      this.puiestoId=this.user.puesto.id
-      this.sharingData.newUserEventEmitter.emit(this.user);
+    this.sharingData.newUserEventEmitter.emit(this.user);
 
-      console.log("id puesto ",this.puiestoId)
-      console.log("usuario",this.user);
+    console.log(this.user); // Verifica aquí en la consola que los datos estén correctos antes de enviarlos al backend
 
-      userForm.reset();
-      userForm.resetForm();
-    }
+ 
+    userForm.reset();
+    userForm.resetForm();
   }
+}
 
   onClear(userForm: NgForm): void {
     this.user = new User();
