@@ -3,14 +3,14 @@ package com.coneval.gestionv.controllers;
 import com.coneval.gestionv.dto.UserRequest;
 import com.coneval.gestionv.entity.User;
 import com.coneval.gestionv.services.UserServices;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -25,8 +25,8 @@ public class UserController {
         return service.findAll();
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<?> buscarPorId(@PathVariable Integer id) {
+    @GetMapping("/buscar/{id}")
+    public ResponseEntity<?>    buscarPorId(@PathVariable Integer id) {
         Optional<User> userOptional = service.findById(id);
         if (userOptional.isPresent()) {
             return ResponseEntity.status(HttpStatus.OK).body(userOptional.orElseThrow());
@@ -54,9 +54,12 @@ public class UserController {
     }
 
     @PutMapping("/editar/{id}")
-    public ResponseEntity<User> Actualizar(@PathVariable Integer id, @RequestBody UserRequest user) {
+    public ResponseEntity<?> Actualizar(@Valid @PathVariable Integer id, @RequestBody User user, BindingResult result) {
         Optional<User> userOptional = service.actualizar(user,id);
 
+        if(result.hasFieldErrors()){
+            return  validation(result);
+        }
         if (userOptional.isPresent()) {
 
             return ResponseEntity.ok(userOptional.orElseThrow());
@@ -64,7 +67,7 @@ public class UserController {
         return ResponseEntity.notFound().build();
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/eliminar/{id}")
     public ResponseEntity<?> Borrar(@PathVariable Integer id) {
         Optional<User> userOptional = service.findById(id);
         if (userOptional.isPresent()) {
@@ -79,5 +82,15 @@ public class UserController {
     public ResponseEntity<?> buscarPorEmail(@PathVariable String email) {
 
         return ResponseEntity.status(HttpStatus.OK).body(this.service.buscarPorEmail(email));
+    }
+
+    private ResponseEntity<?> validation(BindingResult result) {
+        Map<String,String> errors = new HashMap<>();
+
+        result.getFieldErrors().forEach(err->{
+            errors.put(err.getField(),"El campo " + err.getField() + " " + err.getDefaultMessage());
+        });
+
+        return ResponseEntity.badRequest().body(errors);
     }
 }
