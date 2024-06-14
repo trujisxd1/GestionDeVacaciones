@@ -36,8 +36,10 @@ public class UserController {
     }
 
     @PostMapping("/crear")
-    public ResponseEntity<User> Crear(@RequestBody User user) {
-
+    public ResponseEntity<?> Crear(@Valid @RequestBody User user,BindingResult result) {
+        if(result.hasFieldErrors()){
+            return  validation(result);
+        }
         //JSON para editar
 
 //        {

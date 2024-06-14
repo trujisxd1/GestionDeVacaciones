@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,21 +25,24 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotNull
+    @NotEmpty
     @NotBlank
    private String nombre;
 
-   @NotNull
+
    @NotBlank
+   @NotEmpty
    private String apellidoM;
 
-   @NotNull
+
    @NotBlank
+   @NotEmpty
    private String apellidoP;
 
    @Column(unique = true)
    @Email
    @NotBlank
+   @NotEmpty
    private String email;
 
    private String password;
@@ -49,8 +53,9 @@ public class User {
 
 
 
-   @NotNull
+
    @NotBlank
+   @NotEmpty
    private String rfc;
 
 
@@ -61,14 +66,12 @@ public class User {
             uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id","role_id"})})
    private List<Role>roles;
 
-
+    @NotEmpty
     private String fechaDeIngreso;
 
     @ManyToOne
     @JoinColumn(name = "puesto_id")
     private Departamento puesto;
-
-
 
     @ManyToOne
     @JoinColumn(name = "cordinacion_id")
