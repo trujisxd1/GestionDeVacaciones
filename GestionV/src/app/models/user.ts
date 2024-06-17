@@ -14,6 +14,7 @@ export class User{
   fechaDeIngreso!:string
   puesto!: Puesto
   cordinacion!: Cordinacion
+  vacaciones!:[]
 
 
 
