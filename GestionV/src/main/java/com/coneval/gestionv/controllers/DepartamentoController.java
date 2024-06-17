@@ -20,6 +20,14 @@ public class DepartamentoController {
     @Autowired
     private DepartamentoServices departamentoServices;
 
+    @GetMapping("/puesto/{id}")
+
+    public ResponseEntity<?>buscarPorId(@PathVariable Integer id){
+
+        return ResponseEntity.status(HttpStatus.OK).body(this.departamentoServices.buscarPorId(id));
+
+    }
+
     @GetMapping("/puestos")
 
     public ResponseEntity<?> listarDepartamentos() {
