@@ -1,0 +1,42 @@
+<h3>{{title}} </h3>
+
+<div class="table-responsive">
+  <table class="table table-hover table-striped">
+    <thead>
+      <tr>
+
+        <th>Fecha de Inicio</th>
+        <th>Fecha de Fin</th>
+        <th>Estado</th>
+        <th>Periodo</th>
+        <th>Dias Solicitados</th>
+        <th>Dias Restantes</th>
+        <th>Eliminar</th>
+        <th>Editar</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (vaca of vacation; track $index) {
+
+      <tr>
+
+        <td>{{ vaca.fechaInicio }}</td>
+        <td>{{ vaca.fechaFin }}</td>
+        <td>{{ vaca.estado }}</td>
+        <td>{{ vaca.periodo }}</td>
+        <td>{{ vaca.diasSolicitados }}</td>
+        <td>{{ vaca.diasRestantes }}</td>
+
+
+        <!-- <td>
+           <fa-icon (click)="onRemove(user.id)" [icon]="trash" class="fa-xl"></fa-icon>
+
+        </td>
+       <td><fa-icon [routerLink]="['/usuarios/edit',user.id]" [icon]="edit" class="fa-xl"></fa-icon></td> -->
+       </tr>
+      }
+    </tbody>
+  </table>
+  </div>
+<p>vacaciones works!</p>
+
