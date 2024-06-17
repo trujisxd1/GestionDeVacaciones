@@ -3,7 +3,7 @@ import { User } from '../../models/user';
 import { Router, RouterModule } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { SharingDataService } from '../../services/sharing-data.service';
-import { faTrash,faEdit,faUserXmark,faUserPen } from '@fortawesome/free-solid-svg-icons';
+import { faUserPlus,faUserXmark,faUserPen } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @Component({
@@ -20,6 +20,7 @@ export class UserComponent implements OnInit{
    users:User[]=[]
    trash = faUserXmark;
    edit=faUserPen
+   plus=faUserPlus
 
   onRemove(id: number):void {
 
