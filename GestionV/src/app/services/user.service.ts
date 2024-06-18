@@ -20,7 +20,7 @@ export class UserService {
 
   findAll():Observable<User[]>{
 
-    console.log(this.users)
+    // console.log(this.users)
     return this.http.get('http://localhost:8080/api/v1/listar').pipe(
       map((users:any) => users as User[])
 

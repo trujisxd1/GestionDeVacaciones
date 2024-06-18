@@ -13,7 +13,7 @@ export class VacacionesServicesService {
 
   findAll():Observable<Vacaciones[]>{
 
-    console.log(this.vacaciones)
+    // console.log(this.vacaciones)
     return this.http.get('http://localhost:8080/api/v1/vacaciones/listar').pipe(
       map((vacaciones:any) => vacaciones as Vacaciones[])
 
