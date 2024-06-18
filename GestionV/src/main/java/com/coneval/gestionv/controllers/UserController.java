@@ -5,6 +5,9 @@ import com.coneval.gestionv.entity.User;
 import com.coneval.gestionv.services.UserServices;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -23,6 +26,14 @@ public class UserController {
     @GetMapping("/listar")
     public List<User> listar() {
         return service.findAll();
+    }
+
+
+    @GetMapping("/listarPage/{page}")
+    public Page<User> listarPage(@PathVariable Integer page) {
+
+        Pageable pageable= PageRequest.of(page,3);
+        return service.findAllPage(pageable);
     }
 
     @GetMapping("/buscar/{id}")

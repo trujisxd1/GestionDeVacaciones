@@ -12,6 +12,8 @@ import com.coneval.gestionv.repository.RoleRepository;
 import com.coneval.gestionv.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -74,6 +76,11 @@ public class UserServices {
         return repository.save(user);
     }
 
+    @Transactional(readOnly = true)
+    public Page<User> findAllPage(Pageable pageable){
+
+        return this.repository.findAll(pageable);
+    }
     @Transactional
 
     public void deleteById(Integer id) {
