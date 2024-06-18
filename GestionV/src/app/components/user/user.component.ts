@@ -11,6 +11,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   standalone: true,
   imports: [RouterModule,FontAwesomeModule],
   templateUrl: './user.component.html',
+  styleUrl: './user.css'
 
 
 })

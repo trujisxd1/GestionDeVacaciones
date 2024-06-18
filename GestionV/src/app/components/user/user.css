@@ -1,16 +1,26 @@
 /* custom-styles.css */
 
 .custom-table {
-  width: 100%; /* Ajusta el ancho de la tabla al 100% */
-  /* Otros estilos específicos de la tabla */
+  width: 100%;
+  table-layout: auto; /* Deja que las celdas ajusten su ancho automáticamente */
+}
+
+.custom-th, .custom-td {
+  font-size: 14px;
+  padding: 10px;
+  text-align: left;
 }
 
 .custom-th {
-  font-size: 14px; /* Tamaño de fuente para los encabezados */
-  /* Otros estilos para los encabezados de las columnas */
+  background-color: #f8f9fa;
+  font-weight: bold;
 }
 
 .custom-td {
-  font-size: 14px; /* Tamaño de fuente para las celdas */
-  /* Otros estilos para las celdas de la tabla */
+  word-wrap: break-word; /* Permite que las palabras se dividan para evitar desbordamiento */
+  white-space: nowrap; /* Mantén el texto en una sola línea */
+}
+
+.table-responsive {
+  overflow-x: auto;
 }
