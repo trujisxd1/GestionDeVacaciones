@@ -64,9 +64,9 @@ onSubmit(userForm: NgForm): void {
 
     this.sharingData.newUserEventEmitter.emit(this.user);
 
-    console.log(this.user); // Verifica aquí en la consola que los datos estén correctos antes de enviarlos al backend
+    // console.log(this.user); // Verifica aquí en la consola que los datos estén correctos antes de enviarlos al backend
 
- 
+
     userForm.reset();
     userForm.resetForm();
   }

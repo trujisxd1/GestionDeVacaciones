@@ -33,8 +33,8 @@ export class UserAppComponent implements OnInit {
 
 
           this.router.navigate(['/usuarios'])
-          console.log("crear usuario usuer", user)
-          console.log("crear usuario usuernew", userUpdate)
+          // console.log("crear usuario usuer", user)
+          // console.log("crear usuario usuernew", userUpdate)
         })
 
         Swal.fire({
@@ -113,7 +113,7 @@ export class UserAppComponent implements OnInit {
       this.sharingData.selectUserEvenEmitter.emit(user)
     })
 
-    console.log(this.users)
+
   }
 
 
