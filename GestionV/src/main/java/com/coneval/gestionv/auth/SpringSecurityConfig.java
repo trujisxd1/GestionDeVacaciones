@@ -50,6 +50,7 @@ public class SpringSecurityConfig {
                         .requestMatchers(HttpMethod.PUT,"/api/v1/editar/**").permitAll()
                         .requestMatchers(HttpMethod.DELETE,"/api/v1/eliminar/**").permitAll()
                         .requestMatchers(HttpMethod.GET,"/api/v1/vacaciones/listar").permitAll()
+                        .requestMatchers(HttpMethod.GET,"/api/v1/listarPage/**").permitAll()
 
 
 
