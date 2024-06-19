@@ -27,7 +27,14 @@ export class UserService {
 
     )
   }
+  findAllPageable(page:number):Observable<any>{
 
+    // console.log(this.users)
+    return this.http.get<any>(`http://localhost:8080/api/v1/listarPage/${page}`)
+
+
+
+  }
 findAllPuesto():Observable<Puesto[]>{
 
   return this.http.get("http://localhost:8080/api/v1/puestos").pipe(

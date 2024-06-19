@@ -3,7 +3,7 @@ import { User } from '../models/user';
 import { UserService } from '../services/user.service';
 import { DatePipe } from '@angular/common';
 import Swal from 'sweetalert2';
-import { Router, RouterOutlet } from '@angular/router';
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SharingDataService } from '../services/sharing-data.service';
 
@@ -18,7 +18,11 @@ export class UserAppComponent implements OnInit {
 
   users: User[] = [];
 
-  constructor(private service: UserService, private datepipe: DatePipe,private sharingData:SharingDataService, private router:Router) {
+  constructor(private service: UserService,
+     private datepipe: DatePipe,
+     private sharingData:SharingDataService,
+     private router:Router,
+     private route:ActivatedRoute) {
 
   }
 
@@ -98,7 +102,11 @@ export class UserAppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.service.findAll().subscribe(users => this.users = users);
+    // this.service.findAll().subscribe(users => this.users = users);
+    this.route.paramMap.subscribe(params=>{
+      const page=+(params.get('page') || '0')
+      this.service.findAllPageable(page).subscribe(pageable => this.users = pageable.content as User[]);
+    })
     this.addUser()
     this.delete()
     this.finUserById()

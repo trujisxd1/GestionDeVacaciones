@@ -16,6 +16,10 @@ export const routes: Routes = [
       component:UserComponent
     },
     {
+      path:'usuarios/page/:page',
+      component:UserComponent
+    },
+    {
       path:'usuarios/create',
       component:FormUserComponent
     },
