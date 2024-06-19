@@ -32,7 +32,7 @@ public class UserController {
     @GetMapping("/listarPage/{page}")
     public Page<User> listarPage(@PathVariable Integer page) {
 
-        Pageable pageable= PageRequest.of(page,3);
+        Pageable pageable= PageRequest.of(page,5);
         return service.findAllPage(pageable);
     }
 
