@@ -10,66 +10,83 @@ import { SharingDataService } from '../services/sharing-data.service';
 @Component({
   selector: 'user-app',
   standalone: true,
-  imports: [RouterOutlet,NavbarComponent],
+  imports: [RouterOutlet, NavbarComponent],
   templateUrl: './user-app.component.html',
   providers: [DatePipe]
 })
 export class UserAppComponent implements OnInit {
 
   users: User[] = [];
+  paginador: any = {};
 
-  constructor(private service: UserService,
-     private datepipe: DatePipe,
-     private sharingData:SharingDataService,
-     private router:Router,
-     private route:ActivatedRoute) {
-
-  }
+  constructor(
+    private service: UserService,
+    private datepipe: DatePipe,
+    private sharingData: SharingDataService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   addUser(): void {
+    this.sharingData.newUserEventEmitter.subscribe(user => {
+      if (user && user.id > 0) {
+        this.service.update(user).subscribe(userUpdate => {
+          if (this.users) {
+            this.users = this.users.map(u => u.id === userUpdate.id ? userUpdate : u);
+          } else {
+            this.users = [userUpdate];
+          }
 
-    this.sharingData.newUserEventEmitter.subscribe(user=>{
+          // Mensaje de depuración
+          console.log("Usuarios después de actualizar:", this.users);
 
-      if (user.id > 0) {
+          this.router.navigate(['/usuarios'], {
+            state: {
+              user: this.users,
+              paginador: this.paginador
+            }
+          }).then(() => {
+            console.log("Redirección después de actualizar el usuario.");
+          });
 
-        this.service.update(user).subscribe(userUpdate =>{
-          this.users = this.users.map(u => u.id === userUpdate.id ? { ...userUpdate, } : u);
-
-
-          this.router.navigate(['/usuarios'])
-          // console.log("crear usuario usuer", user)
-          // console.log("crear usuario usuernew", userUpdate)
-        })
-
-        Swal.fire({
-          title: "USUARIO ACTUALIZADO",
-          text: "Actualizado con éxito",
-          icon: "success"
+          Swal.fire({
+            title: "USUARIO ACTUALIZADO",
+            text: "Actualizado con éxito",
+            icon: "success"
+          });
         });
       } else {
+        this.service.create(user).subscribe(userNew => {
+          if (this.users) {
+            this.users = [...this.users, userNew];
+          } else {
+            this.users = [userNew];
+          }
 
-        this.service.create(user).subscribe(userNew =>{
+          // Mensaje de depuración
+          console.log("Usuarios después de crear:", this.users);
 
-          this.users = [...this.users, { ...userNew }];
-          this.router.navigate(['/usuarios'])
+          this.router.navigate(['/usuarios'], {
+            state: {
+              user: this.users,
+              paginador: this.paginador
+            }
+          }).then(() => {
+            console.log("Redirección después de crear el usuario.");
+          });
 
-
-        })
-
-        Swal.fire({
-          title: "USUARIO CREADO",
-          text: "Creado con éxito",
-          icon: "success"
+          Swal.fire({
+            title: "USUARIO CREADO",
+            text: "Creado con éxito",
+            icon: "success"
+          });
         });
       }
-
-    })
-
+    });
   }
 
   delete(): void {
-
-    this.sharingData.idUserEventEmitter.subscribe(id =>{
+    this.sharingData.idUserEventEmitter.subscribe(id => {
       Swal.fire({
         title: "Estas seguro de eliminar?",
         text: "No podras revertir esta accion",
@@ -80,54 +97,58 @@ export class UserAppComponent implements OnInit {
         confirmButtonText: "Si, borrar"
       }).then((result) => {
         if (result.isConfirmed) {
+          this.service.remove(id).subscribe(() => {
+            if (this.users) {
+              this.users = this.users.filter(user => user.id != id);
+            }
 
-          this.service.remove(id).subscribe(()=>{
-             this.users = this.users.filter(user => user.id != id);
-          this.router.navigate(['/usuarios/create'],{skipLocationChange:true}).then(()=>{
-            this.router.navigate(['/usuarios'])
-          })
-          })
+            // Mensaje de depuración
+            console.log("Usuarios después de eliminar:", this.users);
 
+            this.router.navigate(['/usuarios/create'], { skipLocationChange: true }).then(() => {
+              this.router.navigate(['/usuarios'], {
+                state: {
+                  user: this.users,
+                  paginador: this.paginador
+                }
+              }).then(() => {
+                console.log("Redirección después de eliminar el usuario.");
+              });
+            });
 
-          Swal.fire({
-            title: "Borrado con exito!",
-            text: "Registro borrado",
-            icon: "success"
+            Swal.fire({
+              title: "Borrado con exito!",
+              text: "Registro borrado",
+              icon: "success"
+            });
           });
         }
       });
-
-    })
-
+    });
   }
 
   ngOnInit(): void {
-    // this.service.findAll().subscribe(users => this.users = users);
-    this.route.paramMap.subscribe(params=>{
-      const page=+(params.get('page') || '0')
-      this.service.findAllPageable(page).subscribe(pageable => this.users = pageable.content as User[]);
-    })
-    this.addUser()
-    this.delete()
-    this.finUserById()
-
+    this.addUser();
+    this.delete();
+    this.finUserById();
+    this.pageUserEvent();
   }
 
-  finUserById(){
-
-    this.sharingData.findUserByIdEventEmitter.subscribe(id =>{
-
-      const user= this.users.find(user=>user.id==id)
-      this.sharingData.selectUserEvenEmitter.emit(user)
-    })
-
-
+  pageUserEvent() {
+    this.sharingData.PageUserEventEmitter.subscribe(pegeable => {
+      if (pegeable) {
+        this.users = pegeable.user || [];
+        this.paginador = pegeable.paginador || {};
+      }
+    });
   }
 
-
-
-
-
-
-
+  finUserById() {
+    this.sharingData.findUserByIdEventEmitter.subscribe(id => {
+      if (id) {
+        const user = this.users.find(user => user.id === id);
+        this.sharingData.selectUserEvenEmitter.emit(user);
+      }
+    });
+  }
 }

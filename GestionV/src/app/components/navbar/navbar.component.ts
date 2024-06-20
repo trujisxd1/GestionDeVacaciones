@@ -18,4 +18,8 @@ export class NavbarComponent {
 
   home=faHouse
 
+  @Input() users:User[]=[]
+
+  @Input() paginador:any={}
+
 }
