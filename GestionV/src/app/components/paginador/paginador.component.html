@@ -4,20 +4,20 @@
 <ul class="pagination">
 
   <li class="page-item">
-    <a  class="page-link" [routerLink]="[url,0]">Primera pagina</a>
+    <a  class="page-link" [routerLink]="[url,0]"><fa-icon  [icon]="back" class="fa-xl"></fa-icon></a>
   </li>
   @if (paginador.number>0) {
   <li class="page-item">
-    <a  class="page-link" [routerLink]="[url,paginador.number-1]">Atras</a>
+    <a  class="page-link" [routerLink]="[url,paginador.number-1]"><fa-icon  [icon]="backTo" class="fa-xl"></fa-icon></a>
   </li>
 }
 @if (paginador.number< paginador.totalPages-1) {
   <li class="page-item">
-    <a  class="page-link" [routerLink]="[url,paginador.number+1]">Siguiente</a>
+    <a  class="page-link" [routerLink]="[url,paginador.number+1]"><fa-icon  [icon]="nextTo" class="fa-xl"></fa-icon></a>
   </li>
 }
   <li class="page-item">
-    <a  class="page-link" [routerLink]="[url,paginador.totalPages-1]">Ultima</a>
+    <a  class="page-link" [routerLink]="[url,paginador.totalPages-1]"><fa-icon  [icon]="next" class="fa-xl"></fa-icon></a>
   </li>
 </ul>
 }
