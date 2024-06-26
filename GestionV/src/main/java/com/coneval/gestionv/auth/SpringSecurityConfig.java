@@ -51,6 +51,8 @@ public class SpringSecurityConfig {
                         .requestMatchers(HttpMethod.DELETE,"/api/v1/eliminar/**").permitAll()
                         .requestMatchers(HttpMethod.GET,"/api/v1/vacaciones/listar").permitAll()
                         .requestMatchers(HttpMethod.GET,"/api/v1/listarPage/**").permitAll()
+                        .requestMatchers(AUTH_WHILELIST).permitAll()
+
 
 
 
@@ -83,6 +85,16 @@ public class SpringSecurityConfig {
         return source;
 
     }
+
+
+    private static final String[] AUTH_WHILELIST={
+            "/api/v1/auth/**",
+            "/v3/api-docs/**",
+            "/v3/api-docs.yaml",
+            "/swagger-ui/**",
+            "/swagger-ui.html"
+    };
+
 
     @Bean
     FilterRegistrationBean<CorsFilter>corsfilter(){
