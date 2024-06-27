@@ -39,6 +39,11 @@ En resumen, una página de gestión de vacaciones combina funcionalidades de sol
 |                                                                                                                                                              **Gustavo Martinez Trujillo**                                                                                                                                                              |
 | <a href="https://www.linkedin.com/in/gustavo-martinez-b66495265/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> <a href="https://github.com/trujisxd1"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> |
 
+|                                                                                                                                <img src="https://avatars.githubusercontent.com/u/115821790?s=400&u=bdf0d59826d3339fb2f1582c16221da65fe0b314&v=4" width=80/>                                                                                                                                 |
+| :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+|                                                                                                                                                              **Brayan Guerrero Puente**                                                                                                                                                              |
+| <a href="https://www.linkedin.com/in/gustavo-martinez-b66495265/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> <a href="https://github.com/Brayn-n"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> |
+
 ## Tareas realizadas por el Front-end
 
 - [x] Presentación de la información: Mostrar datos y contenido
