@@ -98,7 +98,7 @@ En resumen, una página de gestión de vacaciones combina funcionalidades de sol
 ## Esqueema de Base de datos
 
    <td><img width="100" src="https://github.com/trujisxd1/GestionDeVacaciones/assets/169479826/8d13dbee-be0a-4c0c-b4ba-8c22ac7a63ba.png" alt="Login" title="Esquema de Base de Datos"/></td>
-						</tr>
+		</tr>
 	</table>
 </div>
 
