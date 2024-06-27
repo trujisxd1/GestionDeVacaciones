@@ -8,10 +8,9 @@ Gestion de Vacaciones es un Software de Gestión de Vacaciones: Esta es una herr
 
 ## Funcionalidades de la aplicación:
 
-- Solicitud de Vacaciones: Permite a los empleados solicitar periodo de vacaciones especificando las fechas y la duración. La página debe validar las fechas y verificar los saldos disponibles.
+- Solicitud de Vacaciones: Permite a los empleados solicitar periodo de vacaciones especificando las fechas y la duración. La página debe validar las fechas y verificar dias acumulados.
 - Aprobación de Vacaciones: Los Administradores pueden revisar las solicitudes de vacaciones y aprobar o rechazarlas.
-- Registro de Saldo de Vacaciones: La página debe llevar un registro actualizado del saldo de días de vacaciones disponibles para cada empleado. Esto implica cálculos basados en políticas de la empresa (acumulación, ajustes).
-- Notificaciones y Recordatorios: Envía notificaciones automáticas a los empleados sobre el estado de sus solicitudes y recordatorios de días acumulados.
+- Registro de Saldo de Vacaciones: La página debe llevar un registro actualizado de los dias acumulados de vacaciones disponibles para cada empleado. Esto implica cálculos basados en políticas de la empresa (acumulación, ajustes).
 - Seguridad y Acceso: Implementa medidas de seguridad para proteger la información confidencial y garantizar que solo los empleados autorizados puedan acceder a la página.
   
 En resumen, una página de gestión de vacaciones combina funcionalidades de solicitud, aprobación, seguimiento y generación de informes para facilitar la administración eficiente del tiempo libre de los empleados.
@@ -91,7 +90,14 @@ En resumen, una página de gestión de vacaciones combina funcionalidades de sol
 						<td><img width="50" src="https://github.com/trujisxd1/GestionDeVacaciones/assets/169479826/7280db38-9827-40b8-bc03-1a90e704ad68.png" alt="Transferencia" title="Crear Usuario"/></td>
 						<td><img width="50" src="https://github.com/trujisxd1/GestionDeVacaciones/assets/169479826/6d831084-5a7a-4bcc-91b7-636a17d0a397.png" alt="Transaccion" title="Lista de Usuarios"/></td>
 						<td><img width="50" src="https://github.com/trujisxd1/GestionDeVacaciones/assets/169479826/710f31d9-981a-4626-ad56-a2398403fa37.png" alt="Login" title="Lista de Vacaciones"/></td>
-			<td><img width="50" src="https://github.com/trujisxd1/GestionDeVacaciones/assets/169479826/8d13dbee-be0a-4c0c-b4ba-8c22ac7a63ba.png" alt="Login" title="Esquema de Base de Datos"/></td>
+      
+</tr>
+</table>
+</div>
+			
+## Esqueema de Base de datos
+
+   <td><img width="100" src="https://github.com/trujisxd1/GestionDeVacaciones/assets/169479826/8d13dbee-be0a-4c0c-b4ba-8c22ac7a63ba.png" alt="Login" title="Esquema de Base de Datos"/></td>
 						</tr>
 	</table>
 </div>
