@@ -83,12 +83,10 @@ En resumen, una página de gestión de vacaciones combina funcionalidades de sol
 	<table>
 		<tr>
             <td><img width="50" src="https://raw.githubusercontent.com/trujisxd1/GestionDeVacaciones/Frontend/GestionV/src/img/Crear%20Usuario.png" alt="crear" title="crear"/></td>
-						<td><img width="50" src="https://github.com/No-Country/c17-61-t-java/blob/Develop/extra/imgs/imagenesProyecto/Transferir%20Uninon%20Wallet.png" alt="Transferencia" title="Trasferir"/></td>
-						<td><img width="50" src="https://github.com/No-Country/c17-61-t-java/blob/Develop/extra/imgs/imagenesProyecto/Transaccion%20exitosa%20Union%20wallet.png" alt="Transaccion Exitosa" title="Trasferencia"/></td>
-						<td><img width="50" src="https://github.com/No-Country/c17-61-t-java/blob/Develop/extra/imgs/imagenesProyecto/Union%20Wallet%20Login%20im.png" alt="Login" title="Iniciar sesion"/></td>
-						<td><img width="50" src="https://github.com/No-Country/c17-61-t-java/blob/Develop/extra/imgs/imagenesProyecto/Aviso%20de%20transferencia%20exitosa.png" alt="Mail notificacion" title="Noticicacion de transferencia"/></td>
-						<td><img width="50" src="https://github.com/No-Country/c17-61-t-java/blob/Develop/extra/imgs/imagenesProyecto/Mail%20transferecia%20exitosa.png" alt="body mail" title="Mensaje de transferencia"/></td>
-		</tr>
+						<td><img width="50" src="https://github.com/trujisxd1/GestionDeVacaciones/assets/169479826/7280db38-9827-40b8-bc03-1a90e704ad68.png" alt="Transferencia" title="Crear Usuario"/></td>
+						<td><img width="50" src="https://github.com/trujisxd1/GestionDeVacaciones/assets/169479826/6d831084-5a7a-4bcc-91b7-636a17d0a397.png" alt="Transaccion" title="Lista de Usuarios"/></td>
+						<td><img width="50" src="https://github.com/trujisxd1/GestionDeVacaciones/assets/169479826/710f31d9-981a-4626-ad56-a2398403fa37.png" alt="Login" title="Lista de Vacaciones"/></td>
+						</tr>
 	</table>
 </div>
 
