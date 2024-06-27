@@ -82,7 +82,7 @@ En resumen, una página de gestión de vacaciones combina funcionalidades de sol
 <div align="center">
 	<table>
 		<tr>
-            <td><img width="50" src="https://github.com/No-Country/c17-61-t-java/blob/Develop/extra/imgs/imagenesProyecto/Inicio%20Union%20Wallet%20im.png" alt="Inicio" title="Inicio"/></td>
+            <td><img width="50" src="https://raw.githubusercontent.com/trujisxd1/GestionDeVacaciones/Frontend/GestionV/src/img/Crear%20Usuario.png" alt="crear" title="crear"/></td>
 						<td><img width="50" src="https://github.com/No-Country/c17-61-t-java/blob/Develop/extra/imgs/imagenesProyecto/Transferir%20Uninon%20Wallet.png" alt="Transferencia" title="Trasferir"/></td>
 						<td><img width="50" src="https://github.com/No-Country/c17-61-t-java/blob/Develop/extra/imgs/imagenesProyecto/Transaccion%20exitosa%20Union%20wallet.png" alt="Transaccion Exitosa" title="Trasferencia"/></td>
 						<td><img width="50" src="https://github.com/No-Country/c17-61-t-java/blob/Develop/extra/imgs/imagenesProyecto/Union%20Wallet%20Login%20im.png" alt="Login" title="Iniciar sesion"/></td>
