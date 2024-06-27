@@ -51,6 +51,7 @@ public class SpringSecurityConfig {
                         .requestMatchers(HttpMethod.DELETE,"/api/v1/eliminar/**").permitAll()
                         .requestMatchers(HttpMethod.GET,"/api/v1/vacaciones/listar").permitAll()
                         .requestMatchers(HttpMethod.GET,"/api/v1/listarPage/**").permitAll()
+                        .requestMatchers(HttpMethod.POST,"/api/v1/vacaciones/crear/**").permitAll()
                         .requestMatchers(AUTH_WHILELIST).permitAll()
 
 
