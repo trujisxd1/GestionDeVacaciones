@@ -21,5 +21,9 @@ export class VacacionesServicesService {
     )
   }
 
+  create( email:string,vacaciones:Vacaciones):Observable<Vacaciones>{
+
+  return this.http.post<Vacaciones>(`http://localhost:8080/api/v1/vacaciones/crear/${email}`,vacaciones)
+}
 
 }

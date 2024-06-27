@@ -1,0 +1,146 @@
+<div class="container">
+  <div class="card">
+    <div class="card-content">
+      <div class="card-header">
+        <h5 class="card-title">{{(vacaciones.id>0)? 'Actualizar': "solicitar vacaciones"}}</h5>
+      </div>
+      <div class="card-body">
+        <form (ngSubmit)="onSubmit(userForm)" class="form form-control" #userForm="ngForm">
+          <div>
+            <label>Fecha De Inicio</label>
+            <input
+              placeholder="Fecha de Inicio"
+              name="fechaInicio"
+              [(ngModel)]="vacaciones.fechaInicio"
+              class="form-control my-2"
+              type="date"
+              [min]="minDate"
+              required
+              #fechaInicio="ngModel"
+            />
+            @if (fechaInicio.invalid && (fechaInicio.dirty || fechaInicio.touched)) { @if
+            (fechaInicio.errors!['required']) {
+            <div class="text-danger">El campo fecha de inicio es obligatorio</div>
+            } }
+          </div>
+          <label>Fecha de Fin</label>
+          <div>
+            <input
+              placeholder="Fecha de Fin"
+              name="fechaFin"
+              [(ngModel)]="vacaciones.fechaFin"
+              class="form-control my-2"
+              required
+              [min]="minDate"
+              type="date"
+              #fechaFin="ngModel"
+            />
+            @if (fechaFin.invalid && (fechaFin.dirty || fechaFin.touched)) { @if
+            (fechaFin.errors!['required']) {
+            <div class="text-danger">El campo fecha de fin es obligatorio</div>
+            } }
+          </div>
+          <div>
+            <label>Status</label>
+            <select
+              name="estado"
+              [(ngModel)]="vacaciones.estado"
+              class="form-control my-2"
+              required
+              #estado="ngModel"
+            >
+              <option value="" disabled selected>Seleccione un status</option>
+              @for (estados of estados; track $index) {
+                <option [value]="estados.nombre">{{ estados.nombre }}</option>
+              }
+            </select>
+            @if (estado.invalid && (estado.dirty || estado.touched)) {
+              @if (estado.errors!['required']) {
+              <div class="text-danger">El campo status es requerido</div>
+              } }
+          </div>
+          <div>
+            <label>Dias solicitados</label>
+            <select
+              name="diasSolicitados"
+              [(ngModel)]="vacaciones.diasSolicitados"
+              class="form-control my-2"
+              required
+              #diasSolicitados="ngModel"
+            >
+              <option value="" disabled selected>Seleccione cuantos dias</option>
+              @for (diasV of diasV; track $index) {
+                <option [value]="diasV.id">{{ diasV.dia }}</option>
+              }
+            </select>
+            @if (diasSolicitados.invalid && (diasSolicitados.dirty || diasSolicitados.touched)) {
+              @if (diasSolicitados.errors!['required']) {
+              <div class="text-danger">El campo dias solicitados es requerido</div>
+              } }
+          </div>
+          <div>
+            <label>Dias Restantes</label>
+            <input
+              placeholder="Dias restantes"
+              name="diasRestantes"
+              [(ngModel)]="vacaciones.diasRestantes"
+              class="form-control my-2"
+              required
+              #diasRestantes="ngModel"
+            />
+            @if (diasRestantes.invalid && (diasRestantes.dirty || diasRestantes.touched)) { @if
+            (diasRestantes.errors!['required']) {
+            <div class="text-danger">El campo dias restantes es requerido</div>
+            } }
+          </div>
+          <div>
+            <label>Periodo</label>
+            <select
+              name="periodo"
+              [(ngModel)]="vacaciones.periodo"
+              class="form-control my-2"
+              required
+              #periodo="ngModel"
+            >
+              <option value="" disabled selected>Seleccione un puesto</option>
+              @for (periodoV of periodoV; track $index) {
+                <option [value]="periodoV.nombre">{{ periodoV.nombre }}</option>
+              }
+            </select>
+            @if (periodo.invalid && (periodo.dirty || periodo.touched)) {
+              @if (periodo.errors!['required']) {
+              <div class="text-danger">El campo periodo es requerido</div>
+              } }
+          </div>
+          <div>
+            <label>Persona</label>
+            <select
+              name="persona"
+              [(ngModel)]="selectedUserEmail"
+              class="form-control my-2"
+              required
+              #user="ngModel"
+            >
+              <option value="" disabled selected>Seleccione a la persona</option>
+              @for (user of users; track $index) {
+                <option [value]="user.email">{{ user.nombre }} {{user.apellidoM}} {{user.apellidoP}} </option>
+              }
+            </select>
+            @if (user.invalid && (user.dirty || periodo.touched)) {
+              @if (periodo.errors!['required']) {
+              <div class="text-danger">El campo periodo es requerido</div>
+              } }
+          </div>
+          <div>
+            <button type="submit" class="btn btn-primary m-2" [disabled]="userForm.invalid">
+              {{(vacaciones.id>0)? 'Actualizar': "solicitar vacaciones"}}
+            </button>
+            <button type="button" class="btn btn-secondary my-2" (click)="onClear(userForm)">
+              Limpiar Formulario
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
