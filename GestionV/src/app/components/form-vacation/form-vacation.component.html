@@ -80,14 +80,19 @@
           </div>
           <div>
             <label>Dias Restantes</label>
-            <input
-              placeholder="Dias restantes"
+            <select
               name="diasRestantes"
               [(ngModel)]="vacaciones.diasRestantes"
               class="form-control my-2"
               required
               #diasRestantes="ngModel"
-            />
+            >
+              <option value="" disabled selected>Seleccione cuantos dias</option>
+              @for (diasV of diasV; track $index) {
+                <option [value]="diasV.id">{{ diasV.dia }}</option>
+              }
+            </select>
+
             @if (diasRestantes.invalid && (diasRestantes.dirty || diasRestantes.touched)) { @if
             (diasRestantes.errors!['required']) {
             <div class="text-danger">El campo dias restantes es requerido</div>
