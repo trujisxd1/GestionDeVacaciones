@@ -1,7 +1,7 @@
 <h3>{{title}} </h3>
 
-<button class="btn btn-primary my-3" > Agregar vacaciones <fa-icon  [icon]="plus" ></fa-icon></button>
-<!-- [routerLink]="['/usuarios/create']" -->
+<button class="btn btn-primary my-3" [routerLink]="['/vacaciones/create']" > Agregar vacaciones <fa-icon  [icon]="plus" ></fa-icon></button>
+
 <div class="table-responsive">
   <table class="table table-hover table-striped">
     <thead>
@@ -13,6 +13,7 @@
         <th class="custom-th"> Periodo</th>
         <th class="custom-th">Dias Solicitados</th>
         <th class="custom-th">Dias Restantes</th>
+        <th class="custom-th">Persona</th>
         <th class="custom-th">Eliminar</th>
         <th class="custom-th">Editar</th>
         <th class="custom-th">PDF</th>
@@ -29,6 +30,7 @@
         <td class="custom-td">{{ vaca.periodo }}</td>
         <td class="custom-td">{{ vaca.diasSolicitados }}</td>
         <td class="custom-td">{{ vaca.diasRestantes }}</td>
+        <td class="custom-td">{{ vaca.nombreP }} {{vaca.apellidoM}} {{vaca.apellidoP}}  </td>
 
 
 
@@ -41,7 +43,7 @@
 
         <!-- [routerLink]="['/usuarios/edit',user.id]" -->
       </td>
-      <td><fa-icon [icon]="pdf" class="fa-xl"></fa-icon> </td>
+      <td><fa-icon [icon]="pdf" class="fa-xl" (click)="downloadPdf('PDF', vaca.userId,vaca.id)"></fa-icon></td>
        </tr>
       }
     </tbody>
