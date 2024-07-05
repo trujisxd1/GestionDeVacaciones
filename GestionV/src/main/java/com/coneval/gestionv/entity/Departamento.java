@@ -19,5 +19,7 @@ public class Departamento {
 
     private String puesto;
 
-
+    @ManyToOne
+    @JoinColumn(name = "cordinacion_id")
+    private Cordinaciones cordinacion;
 }
