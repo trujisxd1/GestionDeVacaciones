@@ -1,17 +1,21 @@
 package com.coneval.gestionv.controllers;
 
 
+import com.coneval.gestionv.dto.VacacionesDTO;
 import com.coneval.gestionv.entity.Vacaciones;
 import com.coneval.gestionv.services.VacacionesServices;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/vacaciones")
@@ -26,6 +30,11 @@ private VacacionesServices vacacionesServices;
     public List<Vacaciones> listar(){
 
         return this.vacacionesServices.getVacaciones();
+    }
+
+    @GetMapping("/all")
+    public List<VacacionesDTO> getAllVacaciones() {
+        return vacacionesServices.findAll();
     }
 
     @PostMapping("/crear")
@@ -50,6 +59,22 @@ private VacacionesServices vacacionesServices;
         }
     }
 
+    @PutMapping("/editar/{id}")
+
+    public ResponseEntity<?>ActalizarVa(@Valid @PathVariable Integer id, @RequestBody Vacaciones vacaciones, BindingResult result){
+        Optional<Vacaciones>vacacionesOptional=this.vacacionesServices.actualizar(vacaciones,id);
+
+        if (result.hasFieldErrors()){
+
+            return validation(result);
+        }
+        if (vacacionesOptional.isPresent()){
+            return ResponseEntity.ok(vacacionesOptional.orElseThrow());
+        }
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("error");
+    }
+
+
 //    {
 //        "fechaInicio": "2024-06-01",
 //            "fechaFin": "2024-06-15",
@@ -58,5 +83,13 @@ private VacacionesServices vacacionesServices;
 //            "diasSolicitados": 15,
 //            "diasRestantes": 10
 //    }
+private ResponseEntity<?> validation(BindingResult result) {
+    Map<String,String> errors = new HashMap<>();
 
+    result.getFieldErrors().forEach(err->{
+        errors.put(err.getField(),"El campo " + err.getField() + " " + err.getDefaultMessage());
+    });
+
+    return ResponseEntity.badRequest().body(errors);
+}
 }
