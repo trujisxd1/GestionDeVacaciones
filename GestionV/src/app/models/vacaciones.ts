@@ -9,5 +9,8 @@ export class Vacaciones {
   periodo!: string;
   diasSolicitados!: number;
   diasRestantes!: number;
-  user!: { id: number }; // Solo necesitas el ID del usuario para enviar al backend
+  userId!: number;
+  nombreP!:string;
+  apellidoM!:string
+  apellidoP!:string
 }

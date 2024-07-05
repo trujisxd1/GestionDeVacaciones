@@ -14,7 +14,7 @@ export class VacacionesServicesService {
   findAll():Observable<Vacaciones[]>{
 
     // console.log(this.vacaciones)
-    return this.http.get('http://localhost:8080/api/v1/vacaciones/listar').pipe(
+    return this.http.get('http://localhost:8080/api/v1/vacaciones/all').pipe(
       map((vacaciones:any) => vacaciones as Vacaciones[])
 
 
@@ -25,5 +25,12 @@ export class VacacionesServicesService {
 
   return this.http.post<Vacaciones>(`http://localhost:8080/api/v1/vacaciones/crear/${email}`,vacaciones)
 }
-
+downloadPdf(tipo: string, UsuarioId: number, Vacaciones_id: number): Observable<Blob> {
+  const params = {
+    tipo: tipo,
+    UsuarioId: UsuarioId.toString(),
+    Vacaciones_id: Vacaciones_id.toString()
+  };
+  return this.http.get(`http://localhost:8080/report/vacaciones/download`, { params: params, responseType: 'blob' });
+}
 }
