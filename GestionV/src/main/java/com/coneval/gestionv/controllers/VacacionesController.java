@@ -2,6 +2,7 @@ package com.coneval.gestionv.controllers;
 
 
 import com.coneval.gestionv.dto.VacacionesDTO;
+import com.coneval.gestionv.entity.User;
 import com.coneval.gestionv.entity.Vacaciones;
 import com.coneval.gestionv.services.VacacionesServices;
 import jakarta.validation.Valid;
@@ -12,10 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
 @RequestMapping("/api/v1/vacaciones")
@@ -36,6 +34,23 @@ private VacacionesServices vacacionesServices;
     public List<VacacionesDTO> getAllVacaciones() {
         return vacacionesServices.findAll();
     }
+    @GetMapping("/byemail/{email}")
+    public ResponseEntity<List<VacacionesDTO>> getVacacionesByEmail(@PathVariable String email) {
+        List<VacacionesDTO> vacaciones = vacacionesServices.findByEmail(email);
+        if (vacaciones.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        } else {
+            return ResponseEntity.status(HttpStatus.OK).body(vacaciones);
+        }
+    }
+    @DeleteMapping("/eliminar/{id}")
+
+    ResponseEntity<?>eliminarVaca(@PathVariable Integer id){
+        this.vacacionesServices.delete(id);
+
+        return ResponseEntity.noContent().build();
+
+    }
 
     @PostMapping("/crear")
     public ResponseEntity<Vacaciones> crear(@RequestBody Vacaciones vacaciones){
@@ -43,7 +58,15 @@ private VacacionesServices vacacionesServices;
 
         return ResponseEntity.status(HttpStatus.CREATED).body(vacaciones);
     }
-
+    @GetMapping("/buscar/{id}")
+    public ResponseEntity<?>buscarPorId(@PathVariable Integer id) {
+        Optional<Vacaciones> userOptional = vacacionesServices.findById(id);
+        if (userOptional.isPresent()) {
+            return ResponseEntity.status(HttpStatus.OK).body(userOptional.orElseThrow());
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(Collections.singletonMap("error", "el usuario no se encontro por el id:" + id));
+    }
 
     @PostMapping("/crear/{emailUsuario}")
     public ResponseEntity<?> agregarVacaciones(@PathVariable String emailUsuario, @RequestBody Vacaciones vacaciones) {
