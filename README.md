@@ -87,7 +87,7 @@ En resumen, una página de gestión de vacaciones combina funcionalidades de sol
 	<table>
 		<tr>
             <td><img width="50" src="https://raw.githubusercontent.com/trujisxd1/GestionDeVacaciones/Frontend/GestionV/src/img/Crear%20Usuario.png" alt="crear" title="crear"/></td>
-						<td><img width="50" src="https://raw.githubusercontent.com/trujisxd1/GestionDeVacaciones/main/GestionV/src/img/Crear%20vacaciones.png" alt="Crear vacaciones" title="Crear Usuario"/></td>
+						<td><img width="50" src="https://raw.githubusercontent.com/trujisxd1/GestionDeVacaciones/Frontend/GestionV/src/img/Crear%20vacaciones.png" alt="Crear vacaciones" title="Crear Usuario"/></td>
 						<td><img width="50" src="https://raw.githubusercontent.com/trujisxd1/GestionDeVacaciones/Frontend/GestionV/src/img/Lista%20de%20usuarios.png" alt="Transaccion" title="Lista de Usuarios"/></td>
 						<td><img width="50" src="https://raw.githubusercontent.com/trujisxd1/GestionDeVacaciones/Frontend/GestionV/src/img/login.png" alt="Login" title="Lista de Vacaciones"/></td>
       <td><img width="50" src="https://raw.githubusercontent.com/trujisxd1/GestionDeVacaciones/Frontend/GestionV/src/img/reporte%20.png" alt="PDF" title="Reportte pdf"/></td>
