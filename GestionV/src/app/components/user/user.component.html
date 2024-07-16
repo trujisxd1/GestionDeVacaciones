@@ -1,0 +1,57 @@
+
+<h3>{{title}} </h3>
+
+
+@if (admin) {
+ <button class="btn btn-primary my-3" [routerLink]="['/usuarios/create']"> Crear Nuevo Usuario   <fa-icon  [icon]="plus" ></fa-icon></button>
+}
+
+@if (users.length==0) {
+<p class="alert alert-warning">No hay datos</p>
+
+}@else {
+
+  <div class="table-responsive">
+<table class="table table-hover table-striped custom-table">
+  <thead>
+    <tr>
+
+      <th class="custom-th">Nombre</th>
+      <th class="custom-th">Apellido Materno</th>
+      <th class="custom-th">Apellido</th>
+      <th class="custom-th">Email</th>
+      <th class="custom-th">Rfc</th>
+      <th class="custom-th">Fecha de ingreso</th>
+      <th class="custom-th">Puesto</th>
+      <th class="custom-th">Cordinacion</th>
+      @if (admin) {
+      <th class="custom-th">Eliminar</th>
+      <th class="custom-th">Editar</th>
+      }
+    </tr>
+  </thead>
+  <tbody>
+    @for (user of users; track $index) {
+
+    <tr>
+
+      <td class="custom-td">{{ user.nombre }}</td>
+      <td class="custom-td">{{ user.apellidoM }}</td>
+      <td class="custom-td">{{ user.apellidoP }}</td>
+      <td class="custom-td">{{ user.email }}</td>
+      <td class="custom-td">{{ user.rfc }}</td>
+      <td class="custom-td">{{ user.fechaDeIngreso }}</td>
+      <td class="custom-td">{{ user.puesto.puesto}}</td>
+      <td class="custom-td">{{ user.cordinacion.nombre }}</td>
+      @if (admin) {
+      <td> <fa-icon (click)="onRemove(user.id)" [icon]="trash" class="fa-xl"></fa-icon> </td>
+      <td><fa-icon [routerLink]="['/usuarios/edit',user.id]" [icon]="edit" class="fa-xl"></fa-icon></td>
+      }
+    </tr>
+    }
+  </tbody>
+</table>
+</div>
+
+}
+<app-paginador [paginador]="paginador" [url]="pageUrl"/>

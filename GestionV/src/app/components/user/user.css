@@ -1,0 +1,26 @@
+/* custom-styles.css */
+
+.custom-table {
+  width: 100%;
+  table-layout: auto; /* Deja que las celdas ajusten su ancho automáticamente */
+}
+
+.custom-th, .custom-td {
+  font-size: 14px;
+  padding: 10px;
+  text-align: left;
+}
+
+.custom-th {
+  background-color: #f8f9fa;
+  font-weight: bold;
+}
+
+.custom-td {
+  word-wrap: break-word; /* Permite que las palabras se dividan para evitar desbordamiento */
+  white-space: nowrap; /* Mantén el texto en una sola línea */
+}
+
+.table-responsive {
+  overflow-x: auto;
+}

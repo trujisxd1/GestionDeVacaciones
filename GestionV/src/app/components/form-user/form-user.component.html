@@ -1,0 +1,180 @@
+
+<div class="container">
+
+<div class="card" >
+
+    <div class="card-content">
+      <div class="card-header">
+        <h5 class="card-title">{{(user.id>0)? 'Actualizar': "Crear Nuevo Usuario"}}</h5>
+
+      </div>
+      <div class="card-body">
+
+
+        <form
+          (ngSubmit)="onSubmit(userForm)"
+          class="form form-control"
+          #userForm="ngForm"
+        >
+          <div>
+            <input
+              placeholder="Nombre"
+              name="Nombre"
+              [(ngModel)]="user.nombre"
+              class="form-control my-2"
+              required
+              #nombre="ngModel"
+            />
+            @if (nombre.invalid && (nombre.dirty || nombre.touched)) { @if
+            (nombre.errors!['required']) {
+            <div class="text-danger">El campo nombre es requerido</div>
+            } }
+          </div>
+          <div>
+            <input
+              placeholder="Apellido Materno"
+              name="apellidoM"
+              [(ngModel)]="user.apellidoM"
+              class="form-control my-2"
+              required
+              #apellidoM="ngModel"
+            />
+            @if (apellidoM.invalid && (apellidoM.dirty || apellidoM.touched)) { @if
+            (apellidoM.errors!['required']) {
+            <div class="text-danger">El campo apellido materno es requerido</div>
+            } }
+          </div>
+          <div>
+            <input
+              placeholder="Apellido Paterno"
+              name="apellidoP"
+              [(ngModel)]="user.apellidoP"
+              class="form-control my-2"
+              required
+              #apellidoP="ngModel"
+            />
+            @if (apellidoP.invalid && (apellidoP.dirty || apellidoP.touched)) { @if
+            (apellidoP.errors!['required']) {
+            <div class="text-danger">El campo apellido paterno es requerido</div>
+            } }
+          </div>
+          <div>
+            <input
+              placeholder="Correo Electronico"
+              name="email"
+              [(ngModel)]="user.email"
+              class="form-control my-2"
+              type="email"
+              required
+              email
+              #email="ngModel"
+            />
+            @if (email.invalid && (email.dirty || email.touched)) { @if
+            (email.errors!['required']) {
+            <div class="text-danger">El campo correo electrico es requerido</div>
+            } @if (email.errors!['email']) {
+            <div class="text-danger">El email no tiene el formato correcto</div>
+            } }
+          </div>
+          <div>
+            <input
+              placeholder="Contraseña"
+              name="password"
+              type="password"
+              [(ngModel)]="user.password"
+              class="form-control my-2"
+              required
+              #password="ngModel"
+            />
+            @if (password.invalid && (password.dirty || password.touched)) { @if
+            (password.errors!['required']) {
+            <div class="text-danger">El campo  password es requerido</div>
+            } }
+          </div>
+          <div>
+            <input
+              placeholder="Rfc"
+              name="rfc"
+              [(ngModel)]="user.rfc"
+              class="form-control my-2"
+              required
+              #rfc="ngModel"
+            />
+            @if (rfc.invalid && (rfc.dirty || rfc.touched)) { @if
+            (rfc.errors!['required']) {
+            <div class="text-danger">El campo  rfc es requerido</div>
+            } }
+          </div>
+
+          <div>
+            <input
+              placeholder="Fecha de ingreso"
+              name="fechaDeIngreso"
+              [(ngModel)]="user.fechaDeIngreso"
+              class="form-control my-2"
+              required
+              [max]="maxDate"
+              type="date"
+              #fechaDeIngreso="ngModel"
+            />
+
+            @if (fechaDeIngreso.invalid && (fechaDeIngreso.dirty ||
+            fechaDeIngreso.touched)) { @if (fechaDeIngreso.errors!['required']) {
+            <div class="text-danger">El campo fecha de ingreso es requerido</div>
+            } }
+          </div>
+          <div>
+            <select
+              name="puesto"
+              [(ngModel)]="user.puesto.id"
+              class="form-control my-2"
+              required
+              #puesto="ngModel"
+            >
+              <option value="" disabled selected>Seleccione un puesto</option>
+              @for (puesto of puestos; track $index) {
+
+                <option [value]="puesto.id">{{ puesto.puesto }}</option>
+              }
+            </select>
+            @if (puesto.invalid && (puesto.dirty || puesto.touched)) {
+              @if (puesto.errors!['required']) {
+              <div class="text-danger">El campo cordinacion es requerido</div>
+              } }
+          </div>
+          <div>
+            <select
+              name="cordinacion"
+              [(ngModel)]="user.cordinacion.id"
+              class="form-control my-2"
+              required
+              #cordinacion="ngModel"
+            >
+              <option value="" disabled selected>Seleccione una cordinacion</option>
+              @for (cordinacion of cordinaciones; track $index) {
+
+                <option [value]="cordinacion.id">{{ cordinacion.nombre }}</option>
+              }
+            </select>
+            @if (cordinacion.invalid && (cordinacion.dirty || cordinacion.touched)) {
+              @if (cordinacion.errors!['required']) {
+              <div class="text-danger">El campo cordinacion es requerido</div>
+              } }
+          </div>
+          <div>
+            <button type="submit" class="btn btn-primary m-2" [disabled]="userForm.invalid">
+               {{(user.id>0)? 'Actualizar': "Crear Nuevo Usuario"}}
+            </button>
+
+            <button type="button" class="btn btn-secondary my-2" (click)="onClear(userForm)">
+             Limpiar Formulario
+            </button>
+          </div>
+        </form>
+
+      </div>
+
+    </div>
+
+</div>
+</div>

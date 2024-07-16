@@ -1,0 +1,42 @@
+
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+  <div class="container-fluid">
+
+    <a class="navbar-brand">Gestion De Vacaciones</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="navbar-nav">
+        @if (admin) {
+        <a class="nav-link active" aria-current="page" [state]="{users,paginador}" [routerLink]="['/usuarios/page/0']"
+        >Inicio <fa-icon  [icon]="home" ></fa-icon></a>}
+        @if (admin) {
+          <a class="nav-link" [routerLink]="['/usuarios/create']">Crear Usuario <fa-icon  [icon]="plus" ></fa-icon></a>
+
+        }
+
+        @if (admin) {<a class="nav-link" [routerLink]="['/vacaciones']">Vacaciones <fa-icon  [icon]="vac" class="fa-xl"></fa-icon> </a>}
+
+          
+           <a class="nav-link" [routerLink]="['/vacaciones/create']">Crear Vacaciones <fa-icon  [icon]="create" class="fa-xl"></fa-icon> </a>
+
+        <a class="nav-link" [routerLink]="['/vacaciones/misVacaciones']" >Mis vacaciones <fa-icon  [icon]="calendar" class="fa-xl"></fa-icon> </a>
+
+
+      </div>
+    </div>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNavAuth">
+      <span class="nav-item text-primary mx-3 nav-link">
+        @if (loginU.isAuth) {
+          {{loginU.user.email}}
+          <button (click)="hanlerLogout()" class="btn btn-outline-success">Logout</button>
+        }@else {
+         <a  [routerLink]="['/login']" >Login <fa-icon  [icon]="login" class="fa-xl"></fa-icon> </a>
+        }
+
+      </span>
+
+    </div>
+  </div>
+</nav>
