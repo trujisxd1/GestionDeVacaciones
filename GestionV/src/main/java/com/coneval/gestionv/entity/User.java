@@ -40,10 +40,11 @@ public class User {
    private String apellidoP;
 
    @Column(unique = true)
-   @Email
-   @NotBlank
-   @NotEmpty
    private String email;
+
+   private String autorizador;
+
+   private String validador;
 
    private String password;
 
