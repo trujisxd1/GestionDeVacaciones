@@ -3,6 +3,10 @@ import { UserComponent } from './components/user/user.component';
 import { FormUserComponent } from './components/form-user/form-user.component';
 import { VacacionesComponent } from './components/vacaciones/vacaciones.component';
 import { FormVacationComponent } from './components/form-vacation/form-vacation.component';
+import { MisVacacionesComponent } from './components/mis-vacaciones/mis-vacaciones.component';
+import { AuthComponent } from './components/auth/auth.component';
+import { authGuard } from './guards/auth.guard';
+import { ForbiddenComponent } from './components/forbidden/forbidden.component';
 
 export const routes: Routes = [
 
@@ -10,29 +14,54 @@ export const routes: Routes = [
 
     path:'',
     pathMatch:'full',
-    redirectTo:'/usuarios/page/0'
+    redirectTo:'/login'
   },
   {
       path:'usuarios',
-      component:UserComponent
+      component:UserComponent,
+      canActivate:[authGuard]
     },
     {
       path:'usuarios/page/:page',
-      component:UserComponent
+      component:UserComponent,
+      canActivate:[authGuard]
     },
     {
       path:'usuarios/create',
-      component:FormUserComponent
+      component:FormUserComponent,
+      canActivate:[authGuard]
     },
     {
       path:'usuarios/edit/:id',
-      component:FormUserComponent
+      component:FormUserComponent,
+      canActivate:[authGuard]
     },
     {
       path:'vacaciones',
-      component:VacacionesComponent
+      component:VacacionesComponent,
+      canActivate:[authGuard]
     },{
       path:'vacaciones/create',
-      component:FormVacationComponent
+      component:FormVacationComponent,
+      canActivate:[authGuard]
+    },
+    {
+      path:'vacaciones/edit/:id',
+      component:FormVacationComponent,
+      canActivate:[authGuard]
+    },
+    {
+      path:'vacaciones/misVacaciones',
+      component:MisVacacionesComponent,
+      canActivate:[authGuard]
+
+    },
+    {
+      path:'login',
+      component:AuthComponent
+    },
+    {
+      path:'forbiden',
+      component:ForbiddenComponent
     }
 ];
