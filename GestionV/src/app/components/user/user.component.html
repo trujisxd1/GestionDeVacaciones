@@ -2,7 +2,9 @@
 <h3>{{title}} </h3>
 
 
-<button class="btn btn-primary my-3" [routerLink]="['/usuarios/create']"> Crear Nuevo Usuario   <fa-icon  [icon]="plus" ></fa-icon></button>
+@if (admin) {
+ <button class="btn btn-primary my-3" [routerLink]="['/usuarios/create']"> Crear Nuevo Usuario   <fa-icon  [icon]="plus" ></fa-icon></button>
+}
 
 @if (users.length==0) {
 <p class="alert alert-warning">No hay datos</p>
@@ -22,8 +24,10 @@
       <th class="custom-th">Fecha de ingreso</th>
       <th class="custom-th">Puesto</th>
       <th class="custom-th">Cordinacion</th>
+      @if (admin) {
       <th class="custom-th">Eliminar</th>
       <th class="custom-th">Editar</th>
+      }
     </tr>
   </thead>
   <tbody>
@@ -39,11 +43,10 @@
       <td class="custom-td">{{ user.fechaDeIngreso }}</td>
       <td class="custom-td">{{ user.puesto.puesto}}</td>
       <td class="custom-td">{{ user.cordinacion.nombre }}</td>
-      <td>
-        <fa-icon (click)="onRemove(user.id)" [icon]="trash" class="fa-xl"></fa-icon>
-
-      </td>
+      @if (admin) {
+      <td> <fa-icon (click)="onRemove(user.id)" [icon]="trash" class="fa-xl"></fa-icon> </td>
       <td><fa-icon [routerLink]="['/usuarios/edit',user.id]" [icon]="edit" class="fa-xl"></fa-icon></td>
+      }
     </tr>
     }
   </tbody>

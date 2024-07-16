@@ -6,6 +6,7 @@ import { SharingDataService } from '../../services/sharing-data.service';
 import { faUserPlus,faUserXmark,faUserPen } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PaginadorComponent } from '../paginador/paginador.component';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'usuarios',
@@ -39,7 +40,7 @@ export class UserComponent implements OnInit{
   constructor(private router:Router,
      private service:UserService,
       private sharingData:SharingDataService
-      ,private route:ActivatedRoute
+      ,private route:ActivatedRoute,private auth:AuthService
 
       ){
 
@@ -47,7 +48,9 @@ export class UserComponent implements OnInit{
           this.users=this.router.getCurrentNavigation()?.extras.state!['users']
           this.users=this.router.getCurrentNavigation()?.extras.state!['paginador']
         }
-
+  }
+  get admin(){
+    return this.auth.isAdmin()
   }
   ngOnInit(): void {
 
