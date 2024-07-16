@@ -6,80 +6,98 @@ import { diasSolicitados, periodo, statusreport } from '../data/vacacionesData';
 import { User } from '../../models/user';
 import { UserService } from '../../services/user.service';
 import { VacacionesServicesService } from '../../services/vacaciones.services.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { SharingDataService } from '../../services/sharing-data.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-form-vacation',
   standalone: true,
   imports: [FormsModule],
   templateUrl: './form-vacation.component.html',
-  styleUrl: './form-vacation.component.css'
+  styleUrls: ['./form-vacation.component.css']
 })
-export class FormVacationComponent implements OnInit{
+export class FormVacationComponent implements OnInit {
 
-  vacaciones: Vacaciones= new Vacaciones()
-
-  periodoV=periodo
-
-  diasV=diasSolicitados
-
-  estados=statusreport
+  vacaciones: Vacaciones = new Vacaciones();
+  periodoV = periodo;
+  diasV = diasSolicitados;
+  estados = statusreport;
   minDate: string;
+  users: User[] = [];
+  selectedUserEmail!: any ;
+  isEdit: boolean = false;
+  isAdmin: boolean = false;
 
-  users:User[]=[]
-  selectedUserEmail!: string;
-
-
-
-
-  constructor(private userService:UserService, private vacacionesServices:VacacionesServicesService, private router: Router){
+  constructor(
+    private userService: UserService,
+    private vacacionesServices: VacacionesServicesService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private sharingData: SharingDataService,
+    private auth: AuthService
+  ) {
     const today = new Date();
-const day = String(today.getDate()).padStart(2, '0');
-const month = String(today.getMonth() + 1).padStart(2, '0'); // Los meses van de 0 a 11
-const year = today.getFullYear();
-this.minDate = `${year}-${month}-${day}`;
-
+    const day = String(today.getDate()).padStart(2, '0');
+    const month = String(today.getMonth() + 1).padStart(2, '0'); // Los meses van de 0 a 11
+    const year = today.getFullYear();
+    this.minDate = `${year}-${month}-${day}`;
   }
-  ngOnInit(): void {
+  get admin(){
+    return this.auth.isAdmin()
+  }
 
-    this.loadpersonas()
+  ngOnInit(): void {
+    this.isAdmin = this.auth.isAdmin();
+    this.loadPersonas();
+
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.isEdit = true;
+      this.vacacionesServices.findById(Number(id)).subscribe(vacaciones => {
+        this.vacaciones = vacaciones;
+      });
+    } else if (!this.isAdmin) {
+      // Set the current user's email if not an admin
+      this.selectedUserEmail = this.auth.getUserEmail();
+    }
   }
 
   onSubmit(userForm: NgForm): void {
     if (userForm.valid) {
-      if (!this.selectedUserEmail) {
-        Swal.fire({
-          title: "Error",
-          text: "Por favor selecciona un usuario.",
-          icon: "error"
-        });
-        return;
-      }
-
-      this.vacacionesServices.create(this.selectedUserEmail, this.vacaciones).subscribe(
-        response => {
+      if (this.isEdit) {
+        this.vacacionesServices.update(this.vacaciones).subscribe(response => {
           Swal.fire({
             title: "Éxito",
-            text: "Creado con exito", // Aquí puedes mostrar el mensaje desde la respuesta JSON
+            text: "Actualizado con éxito",
             icon: "success"
           });
-          this.router.navigate(['/vacaciones']);
-          userForm.reset();
-          userForm.resetForm();
-        },
-        error => {
-          console.error('Error al enviar la solicitud de vacaciones:', error);
+          this.router.navigate(['/vacaciones/misVacaciones']);
+        });
+      } else {
+        if (!this.selectedUserEmail) {
           Swal.fire({
             title: "Error",
-            text: "Hubo un problema al enviar la solicitud",
+            text: "Por favor selecciona un usuario.",
             icon: "error"
           });
+          return;
         }
-      );
+        this.vacacionesServices.create(this.selectedUserEmail, this.vacaciones).subscribe(response => {
+          Swal.fire({
+            title: "Éxito",
+            text: "Creado con éxito",
+            icon: "success"
+          });
+          this.router.navigate(['/vacaciones/misVacaciones']);
+          userForm.reset();
+          userForm.resetForm();
+        });
+      }
     }
   }
-  onClear(userForm: NgForm): void {
 
+  onClear(userForm: NgForm): void {
     userForm.reset();
     userForm.resetForm();
     Swal.fire({
@@ -88,17 +106,17 @@ this.minDate = `${year}-${month}-${day}`;
       icon: "success"
     });
   }
-  loadpersonas (): void {
-    this.userService.findAll().subscribe(
-      (data: User[]) => {
-        this.users = data;
 
-        console.log(data)
-      },
-      (error) => {
-        console.error('Error fetching puestos:', error);
-      }
-    );
+  loadPersonas(): void {
+    if (this.isAdmin) {
+      this.userService.findAll().subscribe(
+        (data: User[]) => {
+          this.users = data;
+        },
+        (error) => {
+          console.error('Error fetching usuarios:', error);
+        }
+      );
+    }
   }
-
 }

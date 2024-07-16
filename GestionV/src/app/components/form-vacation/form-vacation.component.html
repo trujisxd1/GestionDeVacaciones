@@ -117,6 +117,9 @@
               <div class="text-danger">El campo periodo es requerido</div>
               } }
           </div>
+
+          @if (isEdit==false) {
+            @if(admin){
           <div>
             <label>Persona</label>
             <select
@@ -135,7 +138,8 @@
               @if (periodo.errors!['required']) {
               <div class="text-danger">El campo periodo es requerido</div>
               } }
-          </div>
+          </div>}
+        }
           <div>
             <button type="submit" class="btn btn-primary m-2" [disabled]="userForm.invalid">
               {{(vacaciones.id>0)? 'Actualizar': "solicitar vacaciones"}}
