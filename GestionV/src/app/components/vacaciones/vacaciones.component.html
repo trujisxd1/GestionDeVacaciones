@@ -1,7 +1,10 @@
 <h3>{{title}} </h3>
 
 <button class="btn btn-primary my-3" [routerLink]="['/vacaciones/create']" > Agregar vacaciones <fa-icon  [icon]="plus" ></fa-icon></button>
+@if (vacation.length==0) {
+  <p class="alert alert-warning">No hay datos</p>
 
+  }@else{
 <div class="table-responsive">
   <table class="table table-hover table-striped">
     <thead>
@@ -35,13 +38,13 @@
 
 
         <td>
-           <fa-icon  [icon]="trash" class="fa-xl"></fa-icon>
+           <fa-icon  [icon]="trash" class="fa-xl" (click)="onRemove(vaca.id)"></fa-icon>
 
-           <!-- (click)="onRemove(user.id)" -->
+
         </td>
-       <td><fa-icon [icon]="edit" class="fa-xl"></fa-icon>
+       <td><fa-icon [icon]="edit" class="fa-xl"  [routerLink]="['/vacaciones/edit',vaca.id]"></fa-icon>
 
-        <!-- [routerLink]="['/usuarios/edit',user.id]" -->
+
       </td>
       <td><fa-icon [icon]="pdf" class="fa-xl" (click)="downloadPdf('PDF', vaca.userId,vaca.id)"></fa-icon></td>
        </tr>
@@ -49,6 +52,6 @@
     </tbody>
   </table>
 </div>
-
+}
 <app-paginador [paginador]="paginador" [url]="pageUrl"/>
 
