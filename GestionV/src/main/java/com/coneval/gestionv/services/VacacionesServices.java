@@ -34,6 +34,12 @@ public class VacacionesServices {
                 .map(vacacionesMapper::toDTO)
                 .collect(Collectors.toList());
     }
+
+    public List<VacacionesDTO> findByEmail(String email) {
+        return vacasionesRepository.findByUserEmail(email).stream()
+                .map(vacacionesMapper::toDTO)
+                .collect(Collectors.toList());
+    }
     public List<Vacaciones> getVacaciones(){
 
         return this.vacasionesRepository.findAll();
@@ -62,7 +68,7 @@ public class VacacionesServices {
             vacaDb.setPeriodo(vacaciones.getPeriodo());
             vacaDb.setFechaInicio(vacaciones.getFechaInicio());
             vacaDb.setFechaFin(vacaciones.getFechaFin());
-            vacaDb.setUser(vacaciones.getUser());
+
 
             return Optional.of(vacasionesRepository.save(vacaDb));
         }
@@ -71,15 +77,8 @@ public class VacacionesServices {
     }
 
 
-    public Vacaciones buscarPorId(Integer id){
-
-        Optional<Vacaciones> optional= this.vacasionesRepository.findById(id);
-
-        if (optional.isPresent()){
-            optional.get();
-        }
-            return null;
-
+    public Optional<Vacaciones> findById(Integer id) {
+        return vacasionesRepository.findById(id);
     }
     public void agregarVacaciones(String emailUsuario, Vacaciones vacaciones) {
         // Buscar al usuario por su correo electrónico
@@ -96,4 +95,6 @@ public class VacacionesServices {
             throw new RuntimeException("Usuario no encontrado para el correo electrónico: " + emailUsuario);
         }
     }
+
+
 }
