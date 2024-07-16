@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SharingDataService } from '../services/sharing-data.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'user-app',
@@ -24,7 +25,8 @@ export class UserAppComponent implements OnInit {
     private datepipe: DatePipe,
     private sharingData: SharingDataService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private authService:AuthService
   ) {}
 
   addUser(): void {
@@ -132,6 +134,41 @@ export class UserAppComponent implements OnInit {
     this.delete();
     this.finUserById();
     this.pageUserEvent();
+    this.handlerLogin()
+  }
+
+  handlerLogin(){
+this.sharingData.hanlerdEmitter.subscribe(({email,password})=>{
+  console.log(email)
+
+  this.authService.loginUser({email,password}).subscribe({
+    next:response=>{
+
+      const token=response.token
+      const payload=this.authService.getPayload(token)
+
+      console.log(payload)
+      const user={email:payload.sub}
+
+      const login={
+        user,
+        isAuth:true,
+        isAdmin:payload.isAdmin
+      }
+      this.authService.token=token
+      this.authService.user=login
+
+      this.router.navigate(['/usuarios/page/0'])
+
+    },
+    error:error=>{
+
+      if(error.status==401){
+        Swal.fire('Error en el login','Username o password invalidos','error')
+      }
+    }
+  })
+})
   }
 
   pageUserEvent() {
