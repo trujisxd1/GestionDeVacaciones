@@ -20,6 +20,7 @@ public class VacacionesMapper {
         dto.setNombreP(vacaciones.getUser().getNombre());
         dto.setApellidoP(vacaciones.getUser().getApellidoP());
         dto.setApellidoM(vacaciones.getUser().getApellidoM());
+        dto.setCorreo(vacaciones.getUser().getEmail());
         return dto;
     }
 }
