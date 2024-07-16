@@ -1,6 +1,5 @@
 package com.coneval.gestionv.controllers;
 
-import com.coneval.gestionv.dto.UserRequest;
 import com.coneval.gestionv.entity.User;
 import com.coneval.gestionv.services.UserServices;
 import jakarta.validation.Valid;
@@ -91,11 +90,15 @@ public class UserController {
     }
 
     @GetMapping("/bus/{email}")
-
     public ResponseEntity<?> buscarPorEmail(@PathVariable String email) {
-
-        return ResponseEntity.status(HttpStatus.OK).body(this.service.buscarPorEmail(email));
+        User user = service.buscarPorEmail(email);
+        if (user != null) {
+            return ResponseEntity.status(HttpStatus.OK).body(user);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario no encontrado");
+        }
     }
+
 
     private ResponseEntity<?> validation(BindingResult result) {
         Map<String,String> errors = new HashMap<>();
