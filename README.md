@@ -21,12 +21,12 @@ En resumen, una página de gestión de vacaciones combina funcionalidades de sol
 	<table>
 		<tr>
             <td><img width="50" src="https://user-images.githubusercontent.com/25181517/117201156-9a724800-adec-11eb-9a9d-3cd0f67da4bc.png" alt="Java" title="Java"/></td>
-            <td><img width="50" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSul8Y6IPxOXailHV6X5R_0bym3DIDLLJQ2tA&s" alt="React" title="React"/></td>
+            <td><img width="50" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSul8Y6IPxOXailHV6X5R_0bym3DIDLLJQ2tA&s" alt="React" title="Angular"/></td>
             <td><img width="50" src="https://user-images.githubusercontent.com/25181517/117201470-f6d56780-adec-11eb-8f7c-e70e376cfd07.png" alt="Spring" title="Spring"/></td>
 			<td><img width="50" src="https://user-images.githubusercontent.com/25181517/183891303-41f257f8-6b3d-487c-aa56-c497b880d0fb.png" alt="Spring Boot" title="Spring Boot"/></td>
             <td><img width="50" src="https://user-images.githubusercontent.com/25181517/183896128-ec99105a-ec1a-4d85-b08b-1aa1620b2046.png" alt="MySQL" title="MySQL"/></td>
-		<td><img width="50" src="https://github.com/trujisxd1/GestionDeVacaciones/assets/169479826/d2b3faf1-1833-4d4d-bd5b-d20919201955.png"="nodejs" title="nodejs"/></td>
-		<td><img width="50" src="https://github.com/trujisxd1/GestionDeVacaciones/assets/169479826/3ed88117-4258-4b58-984f-187629402b08.png"="jwt" title="jwt"/></td>
+		<td><img width="50" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/640px-Node.js_logo.svg.png" alt="nodejs" title="nodejs"/></td>
+		<td><img width="50" src="https://w7.pngwing.com/pngs/413/267/png-transparent-jwt-io-json-web-token-hd-logo.png" alt="jwt" title="jwt"/></td>
 		</tr>
 	</table>
 </div>
