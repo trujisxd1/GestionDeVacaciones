@@ -22,6 +22,7 @@ public class VacacionesDTO {
     private String nombreP;
     private String apellidoP;
     private String apellidoM;
+    private String correo;
 
 
 
