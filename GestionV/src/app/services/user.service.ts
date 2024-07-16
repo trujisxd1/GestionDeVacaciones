@@ -4,6 +4,7 @@ import { Observable, map, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Puesto } from '../models/puesto';
 import { Cordinacion } from '../models/cordinacion';
+import { Vacaciones } from '../models/vacaciones';
 
 @Injectable({
   providedIn: 'root'
@@ -70,4 +71,16 @@ remove(id:number):Observable<void>{
   return this.http.delete<void>(`http://localhost:8080/api/v1/eliminar/${id}`)
 }
 
+findByEmail(email: string): Observable<Vacaciones[]> {
+  return this.http.get<Vacaciones[]>(`http://localhost:8080/api/v1/vacaciones/byemail/${email}`);
+}
+
+downloadPdf(tipo: string, UsuarioId: number, Vacaciones_id: number): Observable<Blob> {
+  const params = {
+    tipo: tipo,
+    UsuarioId: UsuarioId.toString(),
+    Vacaciones_id: Vacaciones_id.toString()
+  };
+  return this.http.get(`http://localhost:8080/report/vacaciones/download`, { params: params, responseType: 'blob' });
+}
 }
