@@ -56,10 +56,18 @@ export const diasSolicitados = [
   },
   {
     id: 11,
-    dia: 12
+    dia: 11
+},
+{
+  id: 12,
+  dia: 12
 },
 {
   id: 13,
+  dia: 13
+},
+{
+  id: 14,
   dia: 14
 },
 ]
