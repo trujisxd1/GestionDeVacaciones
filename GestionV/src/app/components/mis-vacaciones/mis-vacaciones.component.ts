@@ -87,8 +87,8 @@ export class MisVacacionesComponent implements OnInit {
           // Mensaje de depuración
           console.log("Usuarios después de eliminar:", this.vacaciones);
 
-          this.router.navigate(['/vacaciones'], { skipLocationChange: true }).then(() => {
-            this.router.navigate(['/vacaciones/misVacaciones'], {
+          this.router.navigate(['vacaciones/misVacaciones'], { skipLocationChange: true }).then(() => {
+            this.router.navigate(['vacaciones/misVacaciones'], {
 
             }).then(() => {
               console.log("Redirección después de eliminar el usuario.");
@@ -104,6 +104,7 @@ export class MisVacacionesComponent implements OnInit {
       }
     });
   }
+
 
   editvaca(): void {
     this.sharingData.newVacationEmitter.subscribe(vaca => {
@@ -134,3 +135,4 @@ export class MisVacacionesComponent implements OnInit {
     });
   }
 }
+
