@@ -47,7 +47,7 @@ public class User {
    private String validador;
 
    private String password;
-
+    private int diasDisponibles = 15;
    @Transient
    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
    private boolean admin;
