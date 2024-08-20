@@ -74,7 +74,12 @@ remove(id:number):Observable<void>{
 findByEmail(email: string): Observable<Vacaciones[]> {
   return this.http.get<Vacaciones[]>(`http://localhost:8080/api/v1/vacaciones/byemail/${email}`);
 }
-
+findByEmaill(email: string): Observable<User> {
+  return this.http.get<User>(`http://localhost:8080/api/v1/bus/${email}`);
+}
+diasRestantes(email: string): Observable<Vacaciones|undefined> {
+  return this.http.get<Vacaciones>(`http://localhost:8080/api/v1/bus/${email}`);
+}
 downloadPdf(tipo: string, UsuarioId: number, Vacaciones_id: number): Observable<Blob> {
   const params = {
     tipo: tipo,
