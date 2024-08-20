@@ -24,6 +24,7 @@
       <th class="custom-th">Fecha de ingreso</th>
       <th class="custom-th">Puesto</th>
       <th class="custom-th">Cordinacion</th>
+      <th class="custom-th">Dias disponibles</th>
       @if (admin) {
       <th class="custom-th">Eliminar</th>
       <th class="custom-th">Editar</th>
@@ -43,6 +44,7 @@
       <td class="custom-td">{{ user.fechaDeIngreso }}</td>
       <td class="custom-td">{{ user.puesto.puesto}}</td>
       <td class="custom-td">{{ user.cordinacion.nombre }}</td>
+      <td class="custom-td">{{ user.diasDisponibles }}</td>
       @if (admin) {
       <td> <fa-icon (click)="onRemove(user.id)" [icon]="trash" class="fa-xl"></fa-icon> </td>
       <td><fa-icon [routerLink]="['/usuarios/edit',user.id]" [icon]="edit" class="fa-xl"></fa-icon></td>
