@@ -9,6 +9,7 @@ export class Vacaciones {
   periodo!: string;
   diasSolicitados!: number;
   diasRestantes!: number;
+  diasDisponibles!:number
   userId!: number;
   nombreP!:string;
   apellidoM!:string

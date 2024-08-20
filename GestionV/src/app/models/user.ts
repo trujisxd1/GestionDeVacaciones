@@ -15,7 +15,7 @@ export class User{
   puesto!: Puesto
   cordinacion!: Cordinacion
   vacaciones!:[]
-
+  diasDisponibles!:number
 
 
 }
