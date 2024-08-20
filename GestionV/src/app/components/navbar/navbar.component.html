@@ -18,15 +18,19 @@
 
         @if (admin) {<a class="nav-link" [routerLink]="['/vacaciones']">Vacaciones <fa-icon  [icon]="vac" class="fa-xl"></fa-icon> </a>}
 
-          
+        @if (loginU.isAuth) {
            <a class="nav-link" [routerLink]="['/vacaciones/create']">Crear Vacaciones <fa-icon  [icon]="create" class="fa-xl"></fa-icon> </a>
 
         <a class="nav-link" [routerLink]="['/vacaciones/misVacaciones']" >Mis vacaciones <fa-icon  [icon]="calendar" class="fa-xl"></fa-icon> </a>
-
+      }
 
       </div>
     </div>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNavAuth">
+      @if (loginU.isAuth) {
+<span class="nav-item text-primary mx-3 nav-link">Dias Restantes {{diasre?.diasDisponibles }} </span>
+      }
+
       <span class="nav-item text-primary mx-3 nav-link">
         @if (loginU.isAuth) {
           {{loginU.user.email}}
