@@ -119,7 +119,7 @@ export class MisVacacionesComponent implements OnInit {
           // Mensaje de depuración
           console.log("Usuarios después de actualizar:");
 
-          this.router.navigate(['/misVacaciones'], {
+          this.router.navigate(['vacaciones/misVacaciones'], {
 
           }).then(() => {
             console.log("Redirección después de actualizar el usuario.");
