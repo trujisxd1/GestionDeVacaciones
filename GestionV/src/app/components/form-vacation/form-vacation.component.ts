@@ -25,7 +25,7 @@ export class FormVacationComponent implements OnInit {
   estados = statusreport;
   minDate: string;
   users: User[] = [];
-  selectedUserEmail!: any ;
+  selectedUserEmail!: any;
   isEdit: boolean = false;
   isAdmin: boolean = false;
 
@@ -39,12 +39,13 @@ export class FormVacationComponent implements OnInit {
   ) {
     const today = new Date();
     const day = String(today.getDate()).padStart(2, '0');
-    const month = String(today.getMonth() + 1).padStart(2, '0'); // Los meses van de 0 a 11
+    const month = String(today.getMonth() + 1).padStart(2, '0');
     const year = today.getFullYear();
     this.minDate = `${year}-${month}-${day}`;
   }
-  get admin(){
-    return this.auth.isAdmin()
+
+  get admin() {
+    return this.auth.isAdmin();
   }
 
   ngOnInit(): void {
@@ -58,7 +59,6 @@ export class FormVacationComponent implements OnInit {
         this.vacaciones = vacaciones;
       });
     } else if (!this.isAdmin) {
-      // Set the current user's email if not an admin
       this.selectedUserEmail = this.auth.getUserEmail();
     }
   }
@@ -83,15 +83,26 @@ export class FormVacationComponent implements OnInit {
           });
           return;
         }
-        this.vacacionesServices.create(this.selectedUserEmail, this.vacaciones).subscribe(response => {
-          Swal.fire({
-            title: "Éxito",
-            text: "Creado con éxito",
-            icon: "success"
+        this.userService.findByEmaill(this.selectedUserEmail).subscribe(user => {
+          const diasDisponibles = user.diasDisponibles;
+          if (diasDisponibles < this.vacaciones.diasSolicitados) {
+            Swal.fire({
+              title: "Error",
+              text: `El usuario no tiene suficientes días disponibles. Días disponibles: ${diasDisponibles}`,
+              icon: "error"
+            });
+            return;
+          }
+          this.vacacionesServices.create(this.selectedUserEmail, this.vacaciones).subscribe(response => {
+            Swal.fire({
+              title: "Éxito",
+              text: "Creado con éxito",
+              icon: "success"
+            });
+            this.router.navigate(['/vacaciones/misVacaciones']);
+            userForm.reset();
+            userForm.resetForm();
           });
-          this.router.navigate(['/vacaciones/misVacaciones']);
-          userForm.reset();
-          userForm.resetForm();
         });
       }
     }
@@ -117,6 +128,21 @@ export class FormVacationComponent implements OnInit {
           console.error('Error fetching usuarios:', error);
         }
       );
+    }
+  }
+
+  onDateChange(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    const selectedDate = new Date(input.value);
+    const day = selectedDate.getDay();
+
+    if (day === 5 || day === 6) {
+      Swal.fire({
+        title: "Fecha inválida",
+        text: "No se puede seleccionar un sábado o domingo.",
+        icon: "warning"
+      });
+      input.value = '';
     }
   }
 }

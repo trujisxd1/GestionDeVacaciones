@@ -8,16 +8,18 @@
         <form (ngSubmit)="onSubmit(userForm)" class="form form-control" #userForm="ngForm">
           <div>
             <label>Fecha De Inicio</label>
+
             <input
-              placeholder="Fecha de Inicio"
-              name="fechaInicio"
-              [(ngModel)]="vacaciones.fechaInicio"
-              class="form-control my-2"
-              type="date"
-              [min]="minDate"
-              required
-              #fechaInicio="ngModel"
-            />
+            type="date"
+            id="vacationDate"
+            name="vacationDate"
+            [(ngModel)]="vacaciones.fechaInicio"
+            (change)="onDateChange($event)"
+            [min]="minDate"
+            #fechaInicio="ngModel"
+            required
+            class="form-control my-2"
+          />
             @if (fechaInicio.invalid && (fechaInicio.dirty || fechaInicio.touched)) { @if
             (fechaInicio.errors!['required']) {
             <div class="text-danger">El campo fecha de inicio es obligatorio</div>
@@ -26,15 +28,16 @@
           <label>Fecha de Fin</label>
           <div>
             <input
-              placeholder="Fecha de Fin"
-              name="fechaFin"
-              [(ngModel)]="vacaciones.fechaFin"
-              class="form-control my-2"
-              required
-              [min]="minDate"
-              type="date"
-              #fechaFin="ngModel"
-            />
+            type="date"
+            id="vacationDate"
+            name="vacationDate"
+            [(ngModel)]="vacaciones.fechaFin"
+            (change)="onDateChange($event)"
+            [min]="minDate"
+            #fechaFin="ngModel"
+            required
+            class="form-control my-2"
+          />
             @if (fechaFin.invalid && (fechaFin.dirty || fechaFin.touched)) { @if
             (fechaFin.errors!['required']) {
             <div class="text-danger">El campo fecha de fin es obligatorio</div>
@@ -80,7 +83,7 @@
               <div class="text-danger">El campo dias solicitados es requerido</div>
               } }
           </div>
-          <div>
+          <!-- <div>
             <label>Dias Restantes</label>
             <select
               name="diasRestantes"
@@ -99,7 +102,7 @@
             (diasRestantes.errors!['required']) {
             <div class="text-danger">El campo dias restantes es requerido</div>
             } }
-          </div>
+          </div> -->
           <div>
             <label>Periodo</label>
             <select
